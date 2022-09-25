@@ -123,11 +123,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Activate Django-Heroku.
-try:
-    if 'HEROKU' in os.environ:
-        import django_heroku
-        django_heroku.settings(locals())
-except ImportError:
-    found = False
