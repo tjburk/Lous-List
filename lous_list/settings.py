@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-jt$_hlsib$45+!e3h^kl-&v)6wb_&pmu$@1!o6%#@lrh9&5$l*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','staff-build-example.herokuapp.com']
 
 
 # Application definition
@@ -115,9 +116,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Activate Django-Heroku.
+try:
+    if 'HEROKU' in os.environ:
+        import django_heroku
+        django_heroku.settings(locals())
+except ImportError:
+    found = False
