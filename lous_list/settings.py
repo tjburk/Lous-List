@@ -35,7 +35,6 @@ SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 # Application definition
 
 INSTALLED_APPS = [
-    "app.apps.AppConfig",
     "bootstrap5",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -84,6 +83,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "lous_list.wsgi.application"
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
@@ -104,14 +110,6 @@ if 'test' in sys.argv:
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'mydatabase'
     }
-
-AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
-    'django.contrib.auth.backends.ModelBackend',
-
-    # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
-]
 
 
 # Password validation

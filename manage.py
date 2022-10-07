@@ -5,7 +5,7 @@ import sys
 
 
 def main():
-    """Run administrative tasks."""
+    """Runmanage.py migrate administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "lous_list.settings")
     try:
         from django.core.management import execute_from_command_line
