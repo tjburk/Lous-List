@@ -29,10 +29,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','127.0.0.1','lous-list-uva.herokuapp.com']
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = "same-origin-allow-popups"
+SECURE_REFERRER_POLICY = 'strict-origin-when-cross-origin'
 
 # Application definition
 
 INSTALLED_APPS = [
+    "app.apps.AppConfig",
+    "bootstrap5",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
