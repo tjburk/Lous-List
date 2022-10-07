@@ -100,15 +100,9 @@ DATABASES = {
 }
 
 if 'test' in sys.argv:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'test',
-            'USER': 'postgres',
-            'PASSWORD': 'test123',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
     }
 
 AUTHENTICATION_BACKENDS = [
