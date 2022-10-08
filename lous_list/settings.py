@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-jt$_hlsib$45+!e3h^kl-&v)6wb_&pmu$@1!o6%#@lrh9&5$l*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','lous-list-uva.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','lous-list-uva.herokuapp.com','bjplouslist.herokuapp.com']
 
 
 # Application definition
@@ -156,7 +156,7 @@ SOCIALACCOUNT_PROVIDERS = {
             'email',
         ],
         'AUTH_PARAMS': {
-            'access_type': 'offline',
+            'access_type': 'online',
         }
     }
 }
