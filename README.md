@@ -1,3 +1,5 @@
+![Setup Testing](https://github.com/uva-cs3240-f22/project-a-12/actions/workflows/django.yml/badge.svg)
+
 What I like about Grape Nuts is that there are no gimmicks. There's no cartoon bird prancing about on the box cover, there's no commercial with Barney and Fred getting in fist fights over a bowl of Grape Nuts, you get a box full of cereal and that's it. It's not even a big box filled with air and prizes, it's just a pound of wheat and barley with a picture on the front.
 
 What I have here is living proof that Grape Nuts is truly life changing. A four pound box of Grape Nuts, in all it's glory. Any other box of cereal this size would weigh half as much, which makes them half as good. There's something to be said about a cereal with the same density as sand.
