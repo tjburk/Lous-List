@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>List of Classes</title>
     {% for i in response %}
-        <h2>{{ i.course_section }} - {{ i.subject }} {{ i.catalog_number }}: {{i.description}}</h2>
+        <h2>{{ i.course_section }} - {{ i.subject }} {{ i.catalog_number }}: {{ i.description }}</h2>
         <h3>{{i.instructor.name}}: {{ i.instructor.email }}</h3>
         {% for j in i.meetings %}
             <h5>{{ j.facility_description }}</h5>
