@@ -1,16 +1,20 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.views import generic
 from .models import Course
 
 import requests
-# Create your views here.
-def index(request):
-    response=requests.get('http://luthers-list.herokuapp.com/api/dept/CS/?format=json').json()
-    return render(request,'list_classes/classes.html',{'response':response})
 
-def update_course_db(request):
-    json = requests.get('http://luthers-list.herokuapp.com/api/dept/CS/?format=json').json()
+class IndexView(generic.ListView):
+    template_name = 'list_classes/index.html'
+    context_object_name = 'course_list'
+
+    def get_queryset(self):
+        return Course.objects.all()
+
+def update_course_db(request, department_mnemonic):
+    json = requests.get('http://luthers-list.herokuapp.com/api/dept/' + department_mnemonic + '/?format=json').json()
     
     for c in json:
         course = Course(
@@ -32,12 +36,3 @@ def update_course_db(request):
         course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
-
-
-        
-        
-        
-
-
-
-# question = get_object_or_404(Question, pk=question_id)

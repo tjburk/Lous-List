@@ -1,0 +1,20 @@
+<main>
+    <section>
+        <h1>Courses:</h1>
+    </section>
+    <section>
+    {% if course_list %}
+        <ul style="list-style:none">
+        {% for course in course_list %}
+            <li>
+                <h2>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h2>
+                <p>Units: {{ course.units }}</p>
+                <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No classes are available.</p>
+    {% endif %}
+    </section>
+</main>

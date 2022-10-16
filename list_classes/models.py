@@ -5,7 +5,6 @@ class Course(models.Model):
     # Instructor
     instructor_name = models.CharField(max_length=50, blank=True)
     instructor_email = models.CharField(max_length=50, blank=True)
-
     course_number = models.IntegerField(primary_key=True)   # Unique course number
     semester_code = models.IntegerField(null=True, blank=True)   # Code for semester (always starts with 1)
     subject = models.CharField(max_length=4, blank=True)    # Mnemonic of class (ex: "CS" 1010)
