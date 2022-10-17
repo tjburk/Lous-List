@@ -13,8 +13,8 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Course.objects.all()
 
-def update_course_db(request, department_mnemonic):
-    json = requests.get('http://luthers-list.herokuapp.com/api/dept/' + department_mnemonic + '/?format=json').json()
+def update_course_db(request):
+    json = requests.get('http://luthers-list.herokuapp.com/api/dept/CS/?format=json').json()
     
     for c in json:
         course = Course(
