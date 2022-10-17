@@ -6,6 +6,10 @@ from .models import Course
 
 import requests
 
+def description(request, course_number):
+    course = get_object_or_404(Course, pk=course_number)
+    return render(request, 'list_classes/description.html', {'course': course})
+
 class IndexView(generic.ListView):
     template_name = 'list_classes/index.html'
     context_object_name = 'course_list'

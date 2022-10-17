@@ -9,6 +9,7 @@
             <li>
                 <h2>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h2>
                 <p>Units: {{ course.units }}</p>
+                <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
                 <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
             </li>
         {% endfor %}
