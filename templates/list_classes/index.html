@@ -9,6 +9,7 @@
             <li>
                 <h2><a href="{% url 'list_classes:description' course.course_number %}">{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</a></h2>
                 <p>Units: {{ course.units }}</p>
+                <p>Type: {{ course.component }}</p>
                 <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
                 <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
             </li>
