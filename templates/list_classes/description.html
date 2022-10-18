@@ -6,5 +6,8 @@
 </head>
 <body>
     <h1>{{ course.description }} - Information</h1>
+    <p>Days: {{ course.meetings_days }}</p>
+    <p>Time: {{ course.meetings_start_time }} {{ course.meetings_end_time }}</p>
+    <p>Location: {{ course.meetings_facility_description }}</p>
 </body>
 </html>

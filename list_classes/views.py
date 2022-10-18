@@ -36,7 +36,12 @@ def update_course_db(request):
             wait_cap = c['wait_cap'],
             enrollment_total = c['enrollment_total'],
             enrollment_available = c['enrollment_available'],
-            topic = c['topic'])
+            topic = c['topic'],
+            meetings_days = c['meetings'][0]['days'],
+            meetings_start_time = c['meetings'][0]['start_time'],
+            meetings_end_time = c['meetings'][0]['end_time'],
+            meetings_facility_description = c['meetings'][0]['facility_description'],
+        )
         course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
