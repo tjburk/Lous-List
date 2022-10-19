@@ -1,8 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import generic
-from .models import Course
+from django.views.generic.edit import CreateView
+
+from .models import Course, Comment
 
 import requests
 
@@ -45,3 +47,8 @@ def update_course_db(request):
         course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
+
+class AddCommentView(CreateView):
+    model = Comment
+    template_name = 'list_classes/add_comment.html'
+    fields='__all__'

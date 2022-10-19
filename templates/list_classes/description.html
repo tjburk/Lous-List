@@ -2,12 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
     <title>{{ course.description }}</title>
 </head>
 <body>
-    <h1>{{ course.description }} - Information</h1>
+    <h1>Information</h1>
+    <hr>
+    <h2>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h2>
+    <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
+    <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
+    <p>Units: {{ course.units }}</p>
+    <p>Type: {{ course.component }}</p>                
     <p>Days: {{ course.meetings_days }}</p>
     <p>Time: {{ course.meetings_start_time }} {{ course.meetings_end_time }}</p>
     <p>Location: {{ course.meetings_facility_description }}</p>
 </body>
+
+<hr>
+<h2>Course Reviews</h2>
+{% if not course.comments.all %}
+    <p>No comments yet... </p>
+{% else %}
+    {% for comment in course.comments.all %}
+    <strong>
+        {{ comment.name }} -
+        {{ comment.date_added }}
+    </strong>
+    <br/>
+    {{ comment.body }}
+    <br/><br/>
+    {% endfor %}
+    {% endif %}
+<a href="{% url 'list_classes:add_comment' course.pk %}">Add Comment</a>
 </html>
