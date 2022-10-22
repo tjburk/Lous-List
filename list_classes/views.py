@@ -6,16 +6,24 @@ from .models import Course
 
 import requests
 
+
 def description(request, course_number):
     course = get_object_or_404(Course, pk=course_number)
-    return render(request, 'list_classes/description.html', {'course': course})
+    # Only display LAB and DIS sections matching same catalog number as lecture
+    component_list = Course.objects.filter(component__in=['LAB', 'DIS'], catalog_number=course.catalog_number)
+    return render(request, "list_classes/description.html", {'course': course, 'component_list': component_list})
+
 
 class IndexView(generic.ListView):
     template_name = 'list_classes/index.html'
     context_object_name = 'course_list'
 
     def get_queryset(self):
-        return Course.objects.all()
+        # Sort data by catalog number and only display LECTURE sections on index page
+        queryset = Course.objects.order_by('catalog_number')
+        queryset = queryset.filter(component__in=['LEC', 'IND'])
+        return queryset
+
 
 def update_course_db(request):
     json = requests.get('http://luthers-list.herokuapp.com/api/dept/CS/?format=json').json()
