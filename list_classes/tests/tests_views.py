@@ -44,7 +44,7 @@ class IndexViewTest(TestCase):
         self.assertTemplateUsed(response, 'list_classes/description.html')
 
 
-    ### Test Comment View ###
+    ### Test Comment View ### NOT WORKING
 
     def test_comment_url_exists_at_desired_location(self):
         response = self.client.get('/list_classes/description/12345/comment')
