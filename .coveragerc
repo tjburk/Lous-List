@@ -1,4 +1,7 @@
-#https://www.youtube.com/watch?v=G2_LmbKb8NE
+# Title: Django Test Coverage Reporting. Python Django Web Framework Course. #33
+# Author: Cryce Truly
+# Date: 10/23/2022
+# URL: https://www.youtube.com/watch?v=G2_LmbKb8NE
 [run]
 omit=
     */venv/*
