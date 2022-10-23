@@ -30,6 +30,7 @@ class Course(models.Model):
     def __str__(self):
         return self.description
 
+
 class Comment(models.Model):
     course = models.ForeignKey(Course, related_name="comments", on_delete=models.CASCADE)
     name =  models.CharField(max_length=255)

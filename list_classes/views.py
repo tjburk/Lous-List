@@ -56,6 +56,7 @@ def update_course_db(request):
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
 
+
 class AddCommentView(CreateView):
     model = Comment
     template_name = 'list_classes/add_comment.html'
