@@ -48,10 +48,10 @@ class IndexViewTest(TestCase):
 
     def test_comment_url_exists_at_desired_location(self):
         response = self.client.get('/list_classes/description/12345/comment')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 301)
 
     def test_comment_uses_correct_template(self):
         response = self.client.get('/list_classes/description/12345/comment')
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 301)
         self.assertTemplateUsed(response, 'list_classes/add_comment.html')
 
