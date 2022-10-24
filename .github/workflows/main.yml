@@ -1,3 +1,5 @@
+#https://blog.healthchecks.io/2020/11/using-github-actions-to-run-django-tests/
+
 name: test_Django
 on: [pull_request, push] # activates the workflow when there is a push or pull request in the repo
 jobs:
