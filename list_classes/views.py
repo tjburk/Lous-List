@@ -24,13 +24,19 @@ class IndexView(generic.ListView):
         # Sort data by catalog number and only display LECTURE sections on index page
         queryset = Course.objects.order_by('catalog_number')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
+        queryset = queryset.filter(subject = 'CS') # CHANGE THIS BASED ON SUBJECT
         return queryset
 
 
 def update_course_db(request):
-    json = requests.get('http://luthers-list.herokuapp.com/api/dept/CS/?format=json').json()
-    
-    for c in json:
+
+    # Add every class to the database
+    subject_list = requests.get('http://luthers-list.herokuapp.com/api/deptlist/?format=json').json()
+    for mnemonic in subject_list:
+        mnemonic = mnemonic["subject"]
+        luthers_list = requests.get('http://luthers-list.herokuapp.com/api/dept/' + mnemonic + '/?format=json').json()
+
+    for c in luthers_list:
         course = Course(
             instructor_name = c['instructor']['name'],
             instructor_email = c['instructor']['email'],
