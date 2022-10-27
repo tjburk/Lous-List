@@ -4,6 +4,7 @@ from datetime import datetime, date
 
 from django.urls import reverse
 
+
 class Course(models.Model):
     # Instructor
     instructor_name = models.CharField(max_length=50, blank=True)
