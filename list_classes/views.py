@@ -61,3 +61,4 @@ class AddCommentView(CreateView):
     model = Comment
     template_name = 'list_classes/add_comment.html'
     fields='__all__'
+

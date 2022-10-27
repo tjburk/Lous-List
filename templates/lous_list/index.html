@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% include 'lous_list/navbar.html' %}
     
 <head>
     <title>Lou's List</title>
@@ -8,29 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
 </head>
-
 <body>
-    {% if user.is_authenticated %}
-        <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="logout/">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="list_classes/">Classes</a>
-        </li>
-      </ul>
-        <p>Welcome, {{ user.username }}</p>
-    {% else %}
-    <ul class="nav">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="accounts/login/">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="list_classes/">Classes</a>
-        </li>
-      </ul>
-        <h1>Please log in</h1>
-    {% endif %}
-
+<h1> This is the home page! </h1>
 </body>
 </html>
