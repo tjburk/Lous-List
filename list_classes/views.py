@@ -34,7 +34,6 @@ def update_course_db(request):
     subject_list = requests.get('http://luthers-list.herokuapp.com/api/deptlist/?format=json').json()
     for mnemonic in subject_list:
         mnemonic = mnemonic["subject"]
-        print(mnemonic)
         luthers_list = requests.get('http://luthers-list.herokuapp.com/api/dept/' + mnemonic + '/?format=json').json()
 
         for c in luthers_list:
