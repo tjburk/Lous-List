@@ -53,25 +53,28 @@ def update_course_db(request):
                 enrollment_total = c['enrollment_total'],
                 enrollment_available = c['enrollment_available'],
                 topic = c['topic'],
+                # Set up default values for meeting
+                meetings_days='-',
+                meetings_start_time="",
+                meetings_end_time="",
+                meetings_facility_description='-',
+                secondary_meetings_days='-',
+                secondary_meetings_start_time="",
+                secondary_meetings_end_time="",
+                secondary_meetings_facility_description='-',
             )
 
-            # Meetings
-
-            if len(c['meetings']) == 0: # Meetings tag not specified
-                course.meetings_days = '-',
-                course.meetings_start_time = "",
-                course.meetings_end_time = "",
-                course.meetings_facility_description = '-',
-            if len(c['meetings']) >= 1: # One meeting time
-                course.meetings_days=c['meetings'][0]['days'],
-                course.meetings_start_time=c['meetings'][0]['start_time'],
-                course.meetings_end_time=c['meetings'][0]['end_time'],
-                course.meetings_facility_description=c['meetings'][0]['facility_description'],
+            # Change Meetings values
+            if len(c['meetings']) >= 1: # One or two meeting times
+                course.meetings_days=c['meetings'][0]['days']
+                course.meetings_start_time=c['meetings'][0]['start_time'][0:5]
+                course.meetings_end_time=c['meetings'][0]['end_time'][0:5]
+                course.meetings_facility_description=c['meetings'][0]['facility_description']
             if len(c['meetings']) == 2: # Two meeting times
-                course.secondary_meetings_days=c['meetings'][1]['days'],
-                course.secondary_meetings_start_time=c['meetings'][1]['start_time'],
-                course.secondary_meetings_end_time=c['meetings'][1]['end_time'],
-                course.secondary_meetings_facility_description=c['meetings'][1]['facility_description'],
+                course.secondary_meetings_days=c['meetings'][1]['days']
+                course.secondary_meetings_start_time=c['meetings'][1]['start_time'][0:5]
+                course.secondary_meetings_end_time=c['meetings'][1]['end_time'][0:5]
+                course.secondary_meetings_facility_description=c['meetings'][1]['facility_description']
             course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
