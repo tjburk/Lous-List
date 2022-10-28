@@ -11,7 +11,7 @@
 <body>
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
     <p>Days: {{ course.meetings_days }}</p>
-    <p>Time: {{ course.meetings_start_time }} {{ course.meetings_end_time }}</p>
+    <p>Time: {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
     <p>Location: {{ course.meetings_facility_description }}</p>
     <section>
     {% if component_list %}
