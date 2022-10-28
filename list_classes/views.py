@@ -24,7 +24,7 @@ class IndexView(generic.ListView):
         # Sort data by catalog number and only display LECTURE sections on index page
         queryset = Course.objects.order_by('catalog_number')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
-        queryset = queryset.filter(subject = 'CS') # CHANGE THIS BASED ON SUBJECT
+        queryset = queryset.filter(subject = 'AIRS') # CHANGE THIS BASED ON SUBJECT
         return queryset
 
 
@@ -34,31 +34,46 @@ def update_course_db(request):
     subject_list = requests.get('http://luthers-list.herokuapp.com/api/deptlist/?format=json').json()
     for mnemonic in subject_list:
         mnemonic = mnemonic["subject"]
+        print(mnemonic)
         luthers_list = requests.get('http://luthers-list.herokuapp.com/api/dept/' + mnemonic + '/?format=json').json()
 
-    for c in luthers_list:
-        course = Course(
-            instructor_name = c['instructor']['name'],
-            instructor_email = c['instructor']['email'],
-            course_number = c['course_number'],
-            semester_code = c['semester_code'],
-            subject = c['subject'],
-            catalog_number = c['catalog_number'],
-            description = c['description'],
-            units = c['units'],
-            component = c['component'],
-            class_capacity = c['class_capacity'],
-            wait_list = c['wait_list'],
-            wait_cap = c['wait_cap'],
-            enrollment_total = c['enrollment_total'],
-            enrollment_available = c['enrollment_available'],
-            topic = c['topic'],
-            meetings_days = c['meetings'][0]['days'],
-            meetings_start_time = c['meetings'][0]['start_time'],
-            meetings_end_time = c['meetings'][0]['end_time'],
-            meetings_facility_description = c['meetings'][0]['facility_description'],
-        )
-        course.save()
+        for c in luthers_list:
+            course = Course(
+                instructor_name = c['instructor']['name'],
+                instructor_email = c['instructor']['email'],
+                course_number = c['course_number'],
+                semester_code = c['semester_code'],
+                subject = c['subject'],
+                catalog_number = c['catalog_number'],
+                description = c['description'],
+                units = c['units'],
+                component = c['component'],
+                class_capacity = c['class_capacity'],
+                wait_list = c['wait_list'],
+                wait_cap = c['wait_cap'],
+                enrollment_total = c['enrollment_total'],
+                enrollment_available = c['enrollment_available'],
+                topic = c['topic'],
+            )
+
+            # Meetings
+
+            if len(c['meetings']) == 0: # Meetings tag not specified
+                course.meetings_days = '-',
+                course.meetings_start_time = "",
+                course.meetings_end_time = "",
+                course.meetings_facility_description = '-',
+            if len(c['meetings']) >= 1: # One meeting time
+                course.meetings_days=c['meetings'][0]['days'],
+                course.meetings_start_time=c['meetings'][0]['start_time'],
+                course.meetings_end_time=c['meetings'][0]['end_time'],
+                course.meetings_facility_description=c['meetings'][0]['facility_description'],
+            if len(c['meetings']) == 2: # Two meeting times
+                course.secondary_meetings_days=c['meetings'][1]['days'],
+                course.secondary_meetings_start_time=c['meetings'][1]['start_time'],
+                course.secondary_meetings_end_time=c['meetings'][1]['end_time'],
+                course.secondary_meetings_facility_description=c['meetings'][1]['facility_description'],
+            course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
 
