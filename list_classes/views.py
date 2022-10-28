@@ -67,13 +67,13 @@ def update_course_db(request):
             # Change Meetings values
             if len(c['meetings']) >= 1: # One or two meeting times
                 course.meetings_days=c['meetings'][0]['days']
-                course.meetings_start_time=c['meetings'][0]['start_time'][0:5]
-                course.meetings_end_time=c['meetings'][0]['end_time'][0:5]
+                course.meetings_start_time=c['meetings'][0]['start_time'][0:5].replace(".", ":")
+                course.meetings_end_time=c['meetings'][0]['end_time'][0:5].replace(".", ":")
                 course.meetings_facility_description=c['meetings'][0]['facility_description']
             if len(c['meetings']) == 2: # Two meeting times
                 course.secondary_meetings_days=c['meetings'][1]['days']
-                course.secondary_meetings_start_time=c['meetings'][1]['start_time'][0:5]
-                course.secondary_meetings_end_time=c['meetings'][1]['end_time'][0:5]
+                course.secondary_meetings_start_time=c['meetings'][1]['start_time'][0:5].replace(".", ":")
+                course.secondary_meetings_end_time=c['meetings'][1]['end_time'][0:5].replace(".", ":")
                 course.secondary_meetings_facility_description=c['meetings'][1]['facility_description']
             course.save()
 
