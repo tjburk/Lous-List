@@ -24,7 +24,7 @@ class IndexView(generic.ListView):
         # Sort data by catalog number and only display LECTURE sections on index page
         queryset = Course.objects.order_by('catalog_number')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
-        queryset = queryset.filter(subject = 'AIRS') # CHANGE THIS BASED ON SUBJECT
+        queryset = queryset.filter(subject__in = ['CS']) # CHANGE THIS BASED ON SUBJECT
         return queryset
 
 
