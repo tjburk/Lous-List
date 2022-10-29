@@ -1,0 +1,33 @@
+{%load static %}
+<nav class="navbar">
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <!-- This section adds UVA Logo and if clicked redirects to home page -->
+    <a href="">
+        <img src="{% static 'UVA_Logo.png' %}" alt="..." height="65">
+    </a>
+    <!-- This section adds the settings button. If clicked redirects to settings page -->
+    <div class="settings">
+        <a href=""> <!-- ADD LINK FOR settings PAGE HERE -->
+            <img align="right" src="{% static 'settings.png' %}" alt="...">
+        </a>
+    </div>
+    <!-- This section adds the profile button. If clicked redirects to profile page -->
+    <!--
+
+        DONT FORGET TO ADD UsER AUTHENTICATION BEFORE sENDING TO PROFILE PAGE
+
+    -->
+    <div class="prof">
+        <a href=""> <!-- ADD LINK FOR profile PAGE HERE -->
+            <img align="right" src="{% static 'profile.png' %}" alt="...">
+        </a>
+    </div>
+    <!-- Adds a search bar that redirects to whatever action form we have by clicking 
+        search symbol or clicking enter-->
+    <div class="search-container">
+        <form>
+            <input type="search" placeholder="Search..">
+            <button type="submit"></button>
+        </form>
+    </div>
+</nav>
