@@ -114,3 +114,5 @@ class AddCommentView(CreateView):
     template_name = 'list_classes/add_comment.html'
     fields='__all__'
 
+
+
