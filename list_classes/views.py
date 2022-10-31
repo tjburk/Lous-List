@@ -1,10 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views import generic
-from django.views.generic.edit import CreateView
 
-from .models import Course, Comment
+from .models import Course
 
 import requests
 
@@ -51,7 +50,6 @@ class IndexView(generic.ListView):
         # Display other programs subjects
         elif self.kwargs['subjects_displayed'] == "programs":
             self.subject_filter = []  # Enter all other programs fields here
-
 
         queryset = queryset.filter(subject__in=self.subject_filter)
         return queryset
@@ -107,12 +105,3 @@ def update_course_db(request):
             course.save()
 
     return HttpResponseRedirect(reverse('list_classes:classes'))
-
-
-class AddCommentView(CreateView):
-    model = Comment
-    template_name = 'list_classes/add_comment.html'
-    fields='__all__'
-
-
-

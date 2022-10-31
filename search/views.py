@@ -2,6 +2,12 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from list_classes.models import Course
 
+"""
+Title: Django Search Tutorial
+Author: Will Vincent
+Date: 10/31/2022
+URL: https://learndjango.com/tutorials/django-search-tutorial
+"""
 
 class SearchResultsView(ListView):
     model = Course
