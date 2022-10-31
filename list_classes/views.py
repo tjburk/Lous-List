@@ -39,9 +39,9 @@ class IndexView(generic.ListView):
         # Display arts and sciences subjects
         elif self.kwargs['subjects_displayed'] == "arts":
             self.subject_filter = ["ARTH", "MUSI"]  # Enter all arts and sciences fields here
-        # Display Human Development subjects
+        # Display human development subjects
         elif self.kwargs['subjects_displayed'] == "humans":
-            self.subject_filter = []  # Enter all Human Development fields here
+            self.subject_filter = []  # Enter all human development fields here
         # Display continuing education subjects
         elif self.kwargs['subjects_displayed'] == "continuing":
             self.subject_filter = []  # Enter all continuing education fields here
