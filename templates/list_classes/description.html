@@ -47,7 +47,7 @@
     {{ comment.body }}
     <br/><br/>
     {% endfor %}
-    {% endif %}
+{% endif %}
 <a href="{% url 'list_classes:add_comment' course.pk %}">Add Comment</a>
 </html>
 

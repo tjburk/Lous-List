@@ -19,12 +19,41 @@ def description(request, course_number):
 class IndexView(generic.ListView):
     template_name = 'list_classes/index.html'
     context_object_name = 'course_list'
+    subject_filter = []
 
     def get_queryset(self):
-        # Sort data by catalog number and only display LECTURE sections on index page
-        queryset = Course.objects.order_by('catalog_number')
+        # Sort data by catalog number/subject and only display LECTURE sections on index page
+        queryset = Course.objects.order_by('catalog_number', 'subject')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
-        queryset = queryset.filter(subject__in = ['CS']) # CHANGE THIS BASED ON SUBJECT
+
+        # Change subjects displayed based on information from home screen
+        # Display all subjects
+        if self.kwargs['subjects_displayed'] == "all":
+            subject_list = requests.get('http://luthers-list.herokuapp.com/api/deptlist/?format=json').json()
+            for mnemonic in subject_list:
+                mnemonic = mnemonic["subject"]
+                self.subject_filter.append(mnemonic)
+        # Display engineering subjects
+        elif self.kwargs['subjects_displayed'] == "engineering":
+            self.subject_filter = ["CS", "APMA"] # Enter all engineering fields here
+        # Display arts and sciences subjects
+        elif self.kwargs['subjects_displayed'] == "arts":
+            self.subject_filter = ["ARTH", "MUSI"]  # Enter all arts and sciences fields here
+        # Display Human Development subjects
+        elif self.kwargs['subjects_displayed'] == "humans":
+            self.subject_filter = []  # Enter all Human Development fields here
+        # Display continuing education subjects
+        elif self.kwargs['subjects_displayed'] == "continuing":
+            self.subject_filter = []  # Enter all continuing education fields here
+        # Display other schools subjects
+        elif self.kwargs['subjects_displayed'] == "schools":
+            self.subject_filter = []  # Enter all other schools fields here
+        # Display other programs subjects
+        elif self.kwargs['subjects_displayed'] == "programs":
+            self.subject_filter = []  # Enter all other programs fields here
+
+
+        queryset = queryset.filter(subject__in=self.subject_filter)
         return queryset
 
 
