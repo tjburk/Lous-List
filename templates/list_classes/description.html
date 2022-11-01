@@ -32,21 +32,5 @@
     {% endif %}
     </section>
 </body>
-
-<hr>
-<h2>Course Reviews</h2>
-{% if not course.comments.all %}
-    <p>No comments yet... </p>
-{% else %}
-    {% for comment in course.comments.all %}
-    <strong>
-        {{ comment.name }} -
-        {{ comment.date_added }}
-    </strong>
-    <br/>
-    {{ comment.body }}
-    <br/><br/>
-    {% endfor %}
-{% endif %}
-<a href="{% url 'comment:add_comment' course.pk %}">Add Comment</a>
+{% include 'comment/description.html' %}
 </html>
