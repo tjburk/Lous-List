@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from list_classes.models import Course, Comment
+from list_classes.models import Course
+from comment.models import Comment
 
 
 class IndexViewTest(TestCase):
@@ -23,11 +24,11 @@ class IndexViewTest(TestCase):
     ### Test Index View ###
 
     def test_index_url_exists_at_desired_location(self):
-        response = self.client.get('/list_classes/')
+        response = self.client.get('/list_classes/all/')
         self.assertEqual(response.status_code, 200)
 
     def test_index_uses_correct_template(self):
-        response = self.client.get('/list_classes/')
+        response = self.client.get('/list_classes/all/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'list_classes/index.html')
 
@@ -43,15 +44,4 @@ class IndexViewTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'list_classes/description.html')
 
-
-    ### Test Comment View ### NOT WORKING
-
-    def test_comment_url_exists_at_desired_location(self):
-        response = self.client.get('/list_classes/description/12345/comment/')
-        self.assertEqual(response.status_code, 200)
-
-    def test_comment_uses_correct_template(self):
-        response = self.client.get('/list_classes/description/12345/comment/')
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'list_classes/add_comment.html')
 

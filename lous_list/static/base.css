@@ -1,0 +1,73 @@
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0 0 0 0;
+    background-color: #002654;
+    overflow: hidden;
+}
+
+.settings {
+    float: right;
+    margin: 15px 15px 0 15px;
+}
+
+.prof {
+    float: right;
+    margin: 15px 0 0 0;
+}
+
+form {
+    float: right;
+    display: flex;
+    padding: 2px;
+    border: 1px solid transparent;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin: -52px 120px 0 0
+}
+
+input[type="search"] {
+    border: #ffffff;
+    background: #ffffff;
+    margin: 0 0 0 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid currentColor;
+    border-radius: inherit;
+  }
+  
+  input[type="search"]::placeholder {
+    color: #bbb;
+  }
+
+  button[type="submit"] {
+    
+    overflow: hidden;
+    width: 35px;
+    padding: 0;
+    margin: 1px 0 0 -2px;
+    background: #ffffff;
+    border: none;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR28GQII1pC-xRTSO873XTfT7xRiAltO87cElyOE3oW&s") no-repeat;
+    background-size: 35px;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    opacity: 1;
+  }
+  
+.foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #444444;
+    color: white;
+    text-align: center;
+    }
