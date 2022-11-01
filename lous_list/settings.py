@@ -41,8 +41,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',
 
-    'list_classes',
     'lous_list',
+    'list_classes',
     'comment',
     'search',
     'allauth',
