@@ -19,11 +19,11 @@ class IndexViewTest(TestCase):
     ### Test Comment View ###
 
     def test_comment_url_exists_at_desired_location(self):
-        response = self.client.get('/list_classes/description/12345/comment/')
+        response = self.client.get('/list_classes/comment/12345/')
         self.assertEqual(response.status_code, 200)
 
     def test_comment_uses_correct_template(self):
-        response = self.client.get('/list_classes/description/12345/comment/')
+        response = self.client.get('/list_classes/comment/12345/')
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'list_classes/add_comment.html')
+        self.assertTemplateUsed(response, 'comment/add_comment.html')
 

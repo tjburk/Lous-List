@@ -1,12 +1,18 @@
 from django.test import TestCase
 
-from comment.models import Comment, Course
-
+from list_classes.models import Course
+from comment.models import Comment
+from django.urls import reverse
 
 class CourseModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
+        Course.objects.create(course_number=12345,
+                              description='Introduction to Testing Courses',
+                              instructor_name='Test Case',
+                              enrollment_available=99,
+                              enrollment_total=100)
         Comment.objects.create(course=Course.objects.get(course_number=12345),
                                name="Test Comment")
 
@@ -37,5 +43,5 @@ class CourseModelTest(TestCase):
     def test_comment_get_absolute_url(self):
         comment = Comment.objects.get(id=1)
         # This will also fail if the urlconf is not defined.
-        self.assertEqual(comment.get_absolute_url(), '/list_classes/')
+        self.assertEqual(comment.get_absolute_url(), '/list_classes/description/12345/')
 

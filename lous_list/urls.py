@@ -25,5 +25,4 @@ urlpatterns = [
     path('logout/', LogoutView.as_view()),
     path('list_classes/', include('list_classes.urls')),
     path('search/', include('search.urls')),
-    path('', include('comment.urls')),
 ]

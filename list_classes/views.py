@@ -10,8 +10,10 @@ import requests
 
 def description(request, course_number):
     course = get_object_or_404(Course, pk=course_number)
-    # Only display LAB and DIS sections matching same catalog number as lecture
-    component_list = Course.objects.filter(component__in=['LAB', 'DIS'], catalog_number=course.catalog_number)
+    # Only display LAB and DIS sections matching same catalog number and subject as lecture
+    component_list = Course.objects.filter(component__in=['LAB', 'DIS'],
+                                           catalog_number=course.catalog_number,
+                                           subject=course.subject)
     return render(request, "list_classes/description.html", {'course': course, 'component_list': component_list})
 
 

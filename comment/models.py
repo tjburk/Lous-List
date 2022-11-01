@@ -13,4 +13,4 @@ class Comment(models.Model):
         return '"%s" by %s - %s' % (self.course.description, self.course.instructor_name, self.name)
 
     def get_absolute_url(self):
-        return reverse('list_classes:classes')
+        return reverse('list_classes:description', kwargs={'course_number': self.course.course_number})
