@@ -25,7 +25,7 @@
     </div>
     <!-- Adds a search bar that redirects to whatever action form we have by clicking enter-->
     <div class="search-container">
-        <form action="search/" method="get">
+        <form action={% url 'search:search' %} method="get">
             <input name="search_query" type="text" placeholder="Search...">
         </form>
     </div>

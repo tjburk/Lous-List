@@ -24,5 +24,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('logout/', LogoutView.as_view()),
     path('list_classes/', include('list_classes.urls')),
-    path('search/', include('search.urls')),
+    path('search/', include('search.urls'), name='search'),
 ]
