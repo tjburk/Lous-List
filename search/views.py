@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from list_classes.models import Course
+from django.db.models import Q
 
 """
 Title: Django Search Tutorial
@@ -15,8 +16,15 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):  # new
         search_query = self.request.GET.get("search_query")
-        object_list = Course.objects.filter(
-            # Searches for query based on fields below
-            description__icontains=search_query,
+        queryset = Course.objects.filter(
+            Q(description__icontains=search_query) |
+            Q(instructor_name__icontains=search_query) |
+            Q(meetings_facility_description__icontains=search_query) |
+            Q(secondary_meetings_facility_description__icontains=search_query) |
+            Q(secondary_meetings_facility_description__icontains=search_query) |
+            Q(meetings_days__icontains=search_query) |
+            Q(secondary_meetings_days__icontains=search_query),
         )
-        return object_list
+        queryset = queryset.order_by('subject', 'catalog_number')
+        queryset = queryset.filter(component__in=['LEC', 'IND'])
+        return queryset

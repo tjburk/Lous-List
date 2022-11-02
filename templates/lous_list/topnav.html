@@ -2,7 +2,7 @@
 <nav class="navbar">
     <link rel="stylesheet" href="{% static 'base.css' %}">
     <!-- This section adds UVA Logo and if clicked redirects to home page -->
-    <a href="">
+    <a href="/">
         <img src="{% static 'UVA_Logo.png' %}" alt="..." height="65">
     </a>
     <!-- This section adds the settings button. If clicked redirects to settings page -->
@@ -14,7 +14,7 @@
     <!-- This section adds the profile button. If clicked redirects to profile page -->
     <div class="prof">
         {% if user.is_authenticated %}
-            <a href=""> <!-- ADD LINK FOR profile PAGE HERE -->
+            <a href={% url 'logout' %}> <!-- ADD LINK FOR profile PAGE HERE (for now it just logs you out)-->
                 <img align="right" src="{% static 'profile.png' %}" alt="...">
             </a>
         {% else %}
@@ -25,7 +25,7 @@
     </div>
     <!-- Adds a search bar that redirects to whatever action form we have by clicking enter-->
     <div class="search-container">
-        <form action="search/" method="get">
+        <form action={% url 'search:search' %} method="get">
             <input name="search_query" type="text" placeholder="Search...">
         </form>
     </div>

@@ -32,7 +32,7 @@ class CourseModelTest(TestCase):
     def test_course_instructor_name_max_length(self):
         course = Course.objects.get(course_number=12345)
         max_length = course._meta.get_field('instructor_name').max_length
-        self.assertEqual(max_length, 50)
+        self.assertEqual(max_length, 500)
 
     def test_course_enrollment_total_greater_or_equal_enrollment_available(self):
         course = Course.objects.get(course_number=12345)

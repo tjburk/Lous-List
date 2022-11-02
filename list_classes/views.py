@@ -24,7 +24,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         # Sort data by catalog number/subject and only display LECTURE sections on index page
-        queryset = Course.objects.order_by('catalog_number', 'subject')
+        queryset = Course.objects.order_by('subject', 'catalog_number')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
 
         # Change subjects displayed based on information from home screen
@@ -63,6 +63,7 @@ def update_course_db(request):
     subject_list = requests.get('http://luthers-list.herokuapp.com/api/deptlist/?format=json').json()
     for mnemonic in subject_list:
         mnemonic = mnemonic["subject"]
+        print(mnemonic)
         luthers_list = requests.get('http://luthers-list.herokuapp.com/api/dept/' + mnemonic + '/?format=json').json()
 
         for c in luthers_list:
@@ -106,4 +107,4 @@ def update_course_db(request):
                 course.secondary_meetings_facility_description=c['meetings'][1]['facility_description']
             course.save()
 
-    return HttpResponseRedirect(reverse('list_classes:classes'))
+    return HttpResponseRedirect(reverse('list_classes:classes', args=['all']))
