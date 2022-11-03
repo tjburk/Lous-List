@@ -1,6 +1,7 @@
 
 from django.test import TestCase
 
+
 class TestSearch(TestCase):
 
     def test_search_url_exists_at_desired_location(self):
