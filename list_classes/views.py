@@ -36,10 +36,11 @@ class IndexView(generic.ListView):
                 mnemonic = mnemonic["subject"]
                 self.subject_filter.append(mnemonic)
 
-        # Display particular subject(s)
+        # Add particular subject to subject filter dict
         else:
             self.subject_filter.append(self.kwargs['subjects_displayed'])
 
+        # Display all subjects in subject filter dict
         queryset = queryset.filter(subject__in=self.subject_filter)
         return queryset
 
