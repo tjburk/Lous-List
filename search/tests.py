@@ -1,14 +1,5 @@
-from django.test import TestCase
-from list_classes.models import Course
-
-
-import json
 
 from django.test import TestCase
-from django.test.client import RequestFactory
-
-from list_classes.models import Course
-
 
 class TestSearch(TestCase):
 
