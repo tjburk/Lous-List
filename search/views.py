@@ -14,7 +14,7 @@ class SearchResultsView(ListView):
     model = Course
     template_name = 'list_classes/index.html'
 
-    def get_queryset(self):  # new
+    def get_queryset(self):
         search_query = self.request.GET.get("search_query")
         queryset = Course.objects.filter(
             Q(description__icontains=search_query) |

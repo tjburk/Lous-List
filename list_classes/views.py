@@ -34,24 +34,10 @@ class IndexView(generic.ListView):
             for mnemonic in subject_list:
                 mnemonic = mnemonic["subject"]
                 self.subject_filter.append(mnemonic)
-        # Display engineering subjects
-        elif self.kwargs['subjects_displayed'] == "engineering":
-            self.subject_filter = ["CS", "APMA"] # Enter all engineering fields here
-        # Display arts and sciences subjects
-        elif self.kwargs['subjects_displayed'] == "arts":
-            self.subject_filter = ["ARTH", "MUSI"]  # Enter all arts and sciences fields here
-        # Display human development subjects
-        elif self.kwargs['subjects_displayed'] == "humans":
-            self.subject_filter = []  # Enter all human development fields here
-        # Display continuing education subjects
-        elif self.kwargs['subjects_displayed'] == "continuing":
-            self.subject_filter = []  # Enter all continuing education fields here
-        # Display other schools subjects
-        elif self.kwargs['subjects_displayed'] == "schools":
-            self.subject_filter = []  # Enter all other schools fields here
-        # Display other programs subjects
-        elif self.kwargs['subjects_displayed'] == "programs":
-            self.subject_filter = []  # Enter all other programs fields here
+
+        # Display particular subject(s)
+        else:
+            self.subject_filter = ['subjects_displayed']
 
         queryset = queryset.filter(subject__in=self.subject_filter)
         return queryset
