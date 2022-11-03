@@ -12,14 +12,11 @@ from list_classes.models import Course
 
 class TestSearch(TestCase):
     def setUpTestData(self):
-        # Create 10 courses
-        number_of_courses = 10
-
-        for course_index in range(number_of_courses):
-            Course.objects.create(
-                course_number=12345 + course_index,
-                description=f'Test Course {course_index}',
-            )
+        # Create Course
+        Course.objects.create(
+            course_number=12345,
+            description='Test Course',
+        )
 
     def test_search_url_exists_at_desired_location(self):
         response = self.client.get('/search/')
