@@ -5,7 +5,7 @@ from list_classes.models import Course
 from comment.models import Comment
 
 
-class IndexViewTest(TestCase):
+class TestIndexView(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Create 10 courses

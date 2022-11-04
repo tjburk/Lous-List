@@ -24,6 +24,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         # Sort data by catalog number/subject and only display LECTURE sections on index page
+        self.subject_filter = []
         queryset = Course.objects.order_by('subject', 'catalog_number')
         queryset = queryset.filter(component__in=['LEC', 'IND'])
 
@@ -34,25 +35,12 @@ class IndexView(generic.ListView):
             for mnemonic in subject_list:
                 mnemonic = mnemonic["subject"]
                 self.subject_filter.append(mnemonic)
-        # Display engineering subjects
-        elif self.kwargs['subjects_displayed'] == "engineering":
-            self.subject_filter = ["CS", "APMA"] # Enter all engineering fields here
-        # Display arts and sciences subjects
-        elif self.kwargs['subjects_displayed'] == "arts":
-            self.subject_filter = ["ARTH", "MUSI"]  # Enter all arts and sciences fields here
-        # Display human development subjects
-        elif self.kwargs['subjects_displayed'] == "humans":
-            self.subject_filter = []  # Enter all human development fields here
-        # Display continuing education subjects
-        elif self.kwargs['subjects_displayed'] == "continuing":
-            self.subject_filter = []  # Enter all continuing education fields here
-        # Display other schools subjects
-        elif self.kwargs['subjects_displayed'] == "schools":
-            self.subject_filter = []  # Enter all other schools fields here
-        # Display other programs subjects
-        elif self.kwargs['subjects_displayed'] == "programs":
-            self.subject_filter = []  # Enter all other programs fields here
 
+        # Add particular subject to subject filter dict
+        else:
+            self.subject_filter.append(self.kwargs['subjects_displayed'])
+
+        # Display all subjects in subject filter dict
         queryset = queryset.filter(subject__in=self.subject_filter)
         return queryset
 
