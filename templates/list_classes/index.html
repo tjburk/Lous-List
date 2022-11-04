@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-{% include 'lous_list/base.html' %}
-
+{% extends 'lous_list/base.html' %}
+{%block content %}
 <head>
     <title>Lou's List</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 </head>
 <main>
     <section>
@@ -33,4 +30,4 @@
     {% endif %}
     </section>
 </main>
-</html>
+{% endblock %}
