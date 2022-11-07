@@ -10,6 +10,7 @@ Date: 10/31/2022
 URL: https://learndjango.com/tutorials/django-search-tutorial
 """
 
+
 class SearchResultsView(ListView):
     model = Course
     template_name = 'list_classes/index.html'

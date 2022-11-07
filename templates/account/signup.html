@@ -11,19 +11,10 @@
         <h1>Sign Up</h1>
         <form method="post" action="{% url 'account_signup' %}">
             {% csrf_token %}
-            {{ form.as_p }}
-            {% comment %} <div class="text_field">
-                <input type="text" placeholder="Username" required>
-            </div>
-            <div class="text_field">
-                <input type="text" placeholder="E-Mail (Optional)">
-            </div>
-            <div class="text_field">
-                <input type="password" placeholder="Password" required>
-            </div>
-            <div class="text_field">
-                <input type="password" placeholder="Confirm Password" required>
-            </div> {% endcomment %}
+            <div class="text_field">{{ form.username }}</div>
+            <div class="text_field">{{ form.email }}</div>
+            <div class="text_field">{{ form.password1 }}</div>
+            <div class="text_field">{{ form.password2 }}</div>
             <input type="submit" value="Sign Up">
             <div class="signup">
                 Already have an Account? <a href="{{login_url}}">Sign In</a>

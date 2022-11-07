@@ -4,6 +4,13 @@ body {
   background: linear-gradient(90deg,#E57200, #232d4b);
   height: 100vh;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  margin: 1rem;
 }
 
 .main {
@@ -14,6 +21,7 @@ body {
   width: 400px;
   background: white;
   border-radius: 10px;
+  text-align: center;
 }
 
 .main h1 {
@@ -53,16 +61,6 @@ form .text_field {
   pointer-events: none;
 }
 
-.pass {
-  margin: -5px 10px 20px 5px;
-  color: #a6a6a6;
-  cursor: pointer;
-}
-
-.pass:hover {
-  text-decoration: underline;
-}
-
 input[type="submit"]{
   width: 100%;
   height: 50px;
@@ -76,6 +74,8 @@ input[type="submit"]{
   outline: none;
 }
 
+
+
 .signup {
   margin: 30px 0;
   text-align: center;
@@ -83,9 +83,59 @@ input[type="submit"]{
   color: #666666;
 }
 
+.buttonOutline {
+  text-align: center;
+  justify-content: center;
+}
+
+.googleSignIn {
+  height: 50px;
+  width: 218px;
+  border: none;
+	border-radius: 2px;
+  color: #4285f4;
+	box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.18), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  border: 1px solid #f9f9f9;
+  display: flex;
+	background-color: #FFF;
+  padding:2px 2px 2px 2px;
+  border-radius: 25px;
+  text-decoration: none;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.googleSignIn--white {
+  background: #FFF;
+  color: #75797b;
+  /* &:active {background: #EEEEEE;} */
+}
+
+.googleSignIn:disabled {
+  background: rgba(0,0,0,0.08);
+  color: rgba(0,0,0,0.4);
+  box-shadow: none;
+}
+
+.googleSignIn__text {
+  padding-left:15px;
+  font-size: 14.25px;
+  line-height: 37px;
+  font-family: Roboto,arial,sans-serif;
+	font-weight: 500;
+	letter-spacing: 0.15px;
+	text-align: left;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
 .signup a {
   color: #232d4b;
   text-decoration: none;
+}
+
+.signup a:hover {
+  text-decoration: underline;
 }
 
 .socialaccount_providers {
