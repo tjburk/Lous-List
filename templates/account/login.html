@@ -1,0 +1,38 @@
+{% extends "account/base.html" %}
+
+{% load account socialaccount %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+<body>
+    <div class="main">
+        <h1>Sign In</h1>
+        {% get_providers as socialaccount_providers %}
+        <div class="buttonOutline">
+            <a href="{% provider_login_url 'google' method='oauth2' %}" formaction="https://www.youtube.com/watch?v=1KhZKNZO8mQ" class="googleSignIn googleSignIn--white">
+                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/G-on-clear.svg" alt="Google logo">
+                <span class="googleSignIn__text">Sign in with Google</span>
+            </a>     
+        </div>
+        <form method="POST" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="text_field">{{ form.login }}</div>
+            <div class="text_field">{{ form.password }}</div>
+            <div class="signup">
+                <a href="{% url 'account_reset_password' %}">Forgot Password?</a>
+            </div>
+            <input type="submit" value="Login">
+            <div class="signup">
+                Don't have an Account? <a href="{{signup_url}}">Sign Up</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

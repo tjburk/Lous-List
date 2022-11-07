@@ -10,9 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
-from pathlib import Path
 import os
 import sys
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-jt$_hlsib$45+!e3h^kl-&v)6wb_&pmu$@1!o6%#@lrh9&5$l*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','lous-list-uva.herokuapp.com','bjplouslist.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','lous-list-uva.herokuapp.com','bjplouslist.herokuapp.com', 'jla6zp-lous.herokuapp.com']
 
 
 # Application definition
@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites',
-    'list_classes',
 
     'lous_list',
+    'list_classes',
+    'comment',
+    'search',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -85,9 +87,27 @@ WSGI_APPLICATION = "lous_list.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-if 'DATABASE_URL' in os.environ:
-    import dj_database_url
-    DATABASES = {'default': dj_database_url.config()}
+if not 'test' in sys.argv:
+    DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'd6sq7o31jjoauf',
+
+        'USER': 'jpqjgwwzriajoy',
+
+        'PASSWORD': '8ee63a8ee83defd07fd28dbcf26abd77e3b5b2165f631a221e37f7795978cb3e',
+
+        'HOST': 'ec2-44-207-253-50.compute-1.amazonaws.com',
+
+        'PORT': '5432',
+
+    }
+
+}
+
 else:
     DATABASES = {
         'default': {
@@ -161,6 +181,10 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'

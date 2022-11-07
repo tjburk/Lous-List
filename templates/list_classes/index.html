@@ -1,0 +1,33 @@
+{% extends 'lous_list/base.html' %}
+{%block content %}
+<head>
+    <title>Lou's List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+</head>
+<main>
+    <section>
+        <h1>Courses:</h1>
+    </section>
+    <section>
+    {% if course_list %}
+        <ul style="list-style:none">
+        {% for course in course_list %}
+            <li>
+                <h2><a href="{% url 'list_classes:description' course.course_number %}">{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</a></h2>
+                <p>Units: {{ course.units }}</p>
+                <p>Type: {{ course.component }}</p>
+                <p>Days: {{ course.meetings_days }}</p>
+                <p>Time: {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
+                <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
+                <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No classes are available.</p>
+    {% endif %}
+    </section>
+</main>
+{% endblock %}

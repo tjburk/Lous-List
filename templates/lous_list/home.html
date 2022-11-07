@@ -1,43 +1,266 @@
-{% extends 'lous_list\base.html' %}
+{% extends 'lous_list/base.html' %}
 {%load static %}
 {%block content %}
-<body>
-    <link rel="stylesheet" href="{% static 'home.css' %}">
-    <!-- Engineer Icon -->
-    <div class="engineer">
-        <a href=""> <!-- ADD LINK TO Engineering PAGE HERE-->
-            <img src="{% static 'engineering.png' %}" alt="..." height ="250">
-        </a>
-    </div>
-    <!-- Arts & Science Icon -->
-    <div class="arts">
-        <a href=""> <!-- ADD LINK TO arts & science PAGE HERE-->
-            <img src="{% static 'arts.png' %}" alt="..." height="250">
-        </a>
-    </div>
-    <!-- Human Development Icon -->
-    <div class="humans">
-        <a href=""> <!-- ADD LINK TO arts & science PAGE HERE-->
-            <img src="{% static 'humans.png' %}" alt="..." height="250">
-        </a>
-    </div>
-    <!-- Continuing Icon -->
-    <div class="continuing">
-        <a href=""> <!-- ADD LINK TO arts & science PAGE HERE-->
-            <img src="{% static 'continuing.png' %}" alt="..." height="250">
-        </a>
-    </div>
-    <!-- Other Schools Icon -->
-    <div class="schools">
-        <a href=""> <!-- ADD LINK TO arts & science PAGE HERE-->
-            <img src="{% static 'schools.png' %}" alt="..." height="250">
-        </a>
-    </div>
-    <!-- Other Programs Icon -->
-    <div class="programs">
-        <a href=""> <!-- ADD LINK TO arts & science PAGE HERE-->
-            <img src="{% static 'programs.png' %}" alt="..." height="250">
-        </a>
-    </div>
-</body>
+<link rel="stylesheet" href="{% static 'homes.css' %}">
+<button class="accordion">Arts & Sciences</button>
+<div class="panel">
+    <a href='/list_classes/HIAF'><button>African History</button></a>
+    <a href='/list_classes/PLAP'><button>American Politics</button></a>
+    <a href='/list_classes/AMST'><button>American Studies</button></a>
+    <a href='/list_classes/ANTH'><button>Anthropology</button></a>
+    <a href='/list_classes/ARCY'><button>Archaeology</button></a>
+    <a href='/list_classes/ASTR'><button>Astronomy</button></a>
+    <a href='/list_classes/ARAD'><button>Arts Administration</button></a>
+    <a href='/list_classes/EVAT'><button>Atmospheric Sciences</button></a>
+    <a href='/list_classes/BIOC'><button>Biochemistry</button></a>
+    <a href='/list_classes/BIOL'><button>Biology</button></a>
+    <a href='/list_classes/BIMS'><button>Biomedical Science</button></a>
+    <a href='/list_classes/BIOP'><button>Biophysics</button></a>
+    <a href='/list_classes/CELL'><button>Cell Biology</button></a>
+    <a href='/list_classes/CHEM'><button>Chemistry</button></a>
+    <a href='/list_classes/CLAS'><button>Classics</button></a>
+    <a href='/list_classes/COGS'><button>Cognitive Science</button></a>
+    <a href='/list_classes/PLCP'><button>Comparative Politics</button></a>
+    <a href='/list_classes/DANC'><button>Dance</button></a>
+    <a href='/list_classes/DRAM'><button>Drama</button></a>
+    <a href='/list_classes/HIEA'><button>East Asian History</button></a>
+    <a href='/list_classes/EVEC'><button>Ecology</button></a>
+    <a href='/list_classes/ECON'><button>Economics</button></a>
+    <a href='/list_classes/EGMT'><button>Engagement</button></a>
+    <a href='/list_classes/MUEN'><button>Ensembles</button></a>
+    <a href='/list_classes/EVSC'><button>Environmental Sciences</button></a>
+    <a href='/list_classes/GSVS'><button>Environments & Sustainability</button></a>
+    <a href='/list_classes/ETP'><button>Environmental Thought and Practice</button></a>
+    <a href='/list_classes/ELA'><button>Engaging in Liberal Arts</button></a>
+    <a href='/list_classes/EURS'><button>European Studies</button></a>
+    <a href='/list_classes/HIEU'><button>European History</button></a>
+    <a href='/list_classes/EVGE'><button>Geosciences</button></a>
+    <a href='/list_classes/GDS'><button>Global Studies</button></a>
+    <a href='/list_classes/GSGS'><button>Global Studies-Global Studies</button></a>
+    <a href='/list_classes/HIST'><button>History</button></a>
+    <a href='/list_classes/ARTH'><button>History of Art</button></a>
+    <a href='/list_classes/ARAH'><button>History of Art and Architecture</button></a>
+    <a href='/list_classes/HBIO'><button>Human Biology</button></a>
+    <a href='/list_classes/EVHY'><button>Hydrology</button></a>
+    <a href='/list_classes/INST'><button>Interdisciplinary Studies</button></a>
+    <a href='/list_classes/ISBU'><button>Interdisciplinary Studies-Business</button></a>
+    <a href='/list_classes/ISHU'><button>Interdisciplinary Studies-Humanities</button></a>
+    <a href='/list_classes/ISIN'><button>Interdisciplinary Studies-Individualized Other</button></a>
+    <a href='/list_classes/ISLS'><button>Interdisciplinary Studies-Liberal Studies Seminar</button></a>
+    <a href='/list_classes/ISSS'><button>Interdisciplinary Studies-Social Sciences</button></a>
+    <a href='/list_classes/IMP'><button>Interdisciplinary Thesis</button></a>
+    <a href='/list_classes/PLIR'><button>International Relations</button></a>
+    <a href='/list_classes/HILA'><button>Latin American History</button></a>
+    <a href='/list_classes/LAST'><button>Latin American Studies</button></a>
+    <a href='/list_classes/MUBD'><button>Marching Band</button></a>
+    <a href='/list_classes/MATH'><button>Mathematics</button></a>
+    <a href='/list_classes/MDST'><button>Media Studies</button></a>
+    <a href='/list_classes/MSP'><button>Medieval Studies</button></a>
+    <a href='/list_classes/MICR'><button>Microbiology</button></a>
+    <a href='/list_classes/HIME'><button>Middle Eastern History</button></a>
+    <a href='/list_classes/GSMS'><button>Middle East & South Asia</button></a>
+    <a href='/list_classes/MUSI'><button>Music</button></a>
+    <a href='/list_classes/NESC'><button>Neuroscience</button></a>
+    <a href='/list_classes/PHIL'><button>Philosophy</button></a>
+    <a href='/list_classes/PHYS'><button>Physics</button></a>
+    <a href='/list_classes/MUPF'><button>Private Performance Instruction</button></a>
+    <a href='/list_classes/PPL'><button>Politcal Philosophy, Policy, and Law</button></a>
+    <a href='/list_classes/PST'><button>Political and Social Thought</button></a>
+    <a href='/list_classes/PLPT'><button>Political Theory</button></a>
+    <a href='/list_classes/PSYC'><button>Psychology</button></a>
+    <a href='/list_classes/GSSJ'><button>Security & Justice</button></a>
+    <a href='/list_classes/SOC'><button>Sociology</button></a>
+    <a href='/list_classes/HISA'><button>South Asian History</button></a>
+    <a href='/list_classes/STAT'><button>Statistics</button></a>
+    <a href='/list_classes/ARTS'><button>Studio Art</button></a>
+    <a href='/list_classes/HIUS'><button>United States History</button></a>
+    <a href='/list_classes/WGS'><button>Women & Gender Studies</button></a>
+</div>
+
+<button class="accordion">Education School</button>
+<div class="panel">
+    <a href='/list_classes/EDIS'><button>Curriculum, Instruction, & Special Ed</button></a>
+    <a href='/list_classes/DH'><button>Digital Humanities</button></a>
+    <a href='/list_classes/EDNC'><button>Education: Non-Credit</button></a>
+    <a href='/list_classes/LPPA'><button>Evaluation & Analysis</button></a>
+    <a href='/list_classes/HR'><button>Human Resoures</button></a>
+    <a href='/list_classes/EDHS'><button>Human Services</button></a>
+    <a href='/list_classes/KINE'><button>Kinesiology</button></a>
+    <a href='/list_classes/LPPL'><button>Leadership</button></a>
+    <a href='/list_classes/EDLF'><button>Leadership, Foundations, & Policy</button></a>
+    <a href='/list_classes/KLPA'><button>Lifetime Physical Activity</button></a>
+    <a href='/list_classes/LPPP'><button>Policy</button></a>
+    <a href='/list_classes/LPPS'><button>Substantive</button></a>
+</div>
+
+<button class="accordion">Engineering</button>
+<div class="panel">
+    <a href='/list_classes/APMA'><button>Applied Mathematics</button></a>
+    <a href='/list_classes/AM'><button>Applied Mechanics</button></a>
+    <a href='/list_classes/CE'><button>Civil Engineering</button></a>
+    <a href='/list_classes/CHE'><button>Chemical Engineering</button></a>
+    <a href='/list_classes/CPE'><button>Computer Engineering</button></a>
+    <a href='/list_classes/CS'><button>Computer Science</button></a>
+    <a href='/list_classes/SEC'><button>Cyber Security Analysis</button></a>
+    <a href='/list_classes/DS'><button>Data Science</button></a>
+    <a href='/list_classes/ECE'><button>Electrical and Computer Engineering</button></a>
+    <a href='/list_classes/ENGR'><button>Engineering</button></a>
+    <a href='/list_classes/IT'><button>Informational Technology</button></a>
+    <a href='/list_classes/MSE'><button>Materials Science & Engineering</button></a>
+    <a href='/list_classes/MAE'><button>Mechanical & Aerospace Engineering</button></a>
+    <a href='/list_classes/STS'><button>Science, Technology, & Society</button></a>
+    <a href='/list_classes/SYS'><button>Systems & Information Engineering</button></a>
+</div>
+
+<button class="accordion">Language</button>
+<div class="panel">
+    <a href='/list_classes/ARAB'><button>Arabic</button></a>
+    <a href='/list_classes/ARTR'><button>Arabic in Translation</button></a>
+    <a href='/list_classes/ASL'><button>American Sign Language</button></a>
+    <a href='/list_classes/CHIN'><button>Chinese</button></a>
+    <a href='/list_classes/CHTR'><button>Chinese in Translation</button></a>
+    <a href='/list_classes/ENCW'><button>Creative Writing</button></a>
+    <a href='/list_classes/CREO'><button>Creole</button></a>
+    <a href='/list_classes/EALC'><button>East Asian Language, Literatures, Cultures</button></a>
+    <a href='/list_classes/EAST'><button>East Asian Studies</button></a>
+    <a href='/list_classes/ESL'><button>English As A Second Language</button></a>
+    <a href='/list_classes/ENGL'><button>English-Literature</button></a>
+    <a href='/list_classes/FREN'><button>French</button></a>
+    <a href='/list_classes/LNGS'><button>General Linguistics</button></a>
+    <a href='/list_classes/GERM'><button>German</button></a>
+    <a href='/list_classes/GETR'><button>German in Translation</button></a>
+    <a href='/list_classes/GREE'><button>Greek</button></a>
+    <a href='/list_classes/HEBR'><button>Hebrew</button></a>
+    <a href='/list_classes/HIND'><button>Hindi</button></a>
+    <a href='/list_classes/ITAL'><button>Italian</button></a>
+    <a href='/list_classes/ITTR'><button>Italian in Translation</button></a>
+    <a href='/list_classes/JAPN'><button>Japanese</button></a>
+    <a href='/list_classes/JPTR'><button>Japanese in Translation</button></a>
+    <a href='/list_classes/KOR'><button>Korean</button></a>
+    <a href='/list_classes/LATI'><button>Latin</button></a>
+    <a href='/list_classes/LING'><button>Linguistics</button></a>
+    <a href='/list_classes/KICH'><button>Maya K'iche</button></a>
+    <a href='/list_classes/MESA'><button>Middle Eastern & South Asian Languages & Cultures</button></a>
+    <a href='/list_classes/PERS'><button>Persian</button></a>
+    <a href='/list_classes/PETR'><button>Persian in Translation</button></a>
+    <a href='/list_classes/POL'><button>Polish</button></a>
+    <a href='/list_classes/PORT'><button>Portuguese</button></a>
+    <a href='/list_classes/POTR'><button>Portuguese in Translation</button></a>
+    <a href='/list_classes/RUSS'><button>Russian</button></a>
+    <a href='/list_classes/RUTR'><button>Russian in Translation</button></a>
+    <a href='/list_classes/SANS'><button>Sanskrit</button></a>
+    <a href='/list_classes/SLAV'><button>Slavic</button></a>
+    <a href='/list_classes/SLTR'><button>Slavic in Translation</button></a>
+    <a href='/list_classes/SAST'><button>South Asian Studies</button></a>
+    <a href='/list_classes/SATR'><button>South Asian Literature in Translation</button></a>
+    <a href='/list_classes/SPAN'><button>Spanish</button></a>
+    <a href='/list_classes/SWAH'><button>Swahili</button></a>
+    <a href='/list_classes/URDU'><button>Urdu</button></a>
+    <a href='/list_classes/ENWR'><button>Writing and Rhetoric</button></a>
+</div>
+
+<button class="accordion">Religion</button>
+<div class="panel">
+    <a href='/list_classes/RELA'><button>African Religions</button></a>
+    <a href='/list_classes/RELB'><button>Buddhism</button></a>
+    <a href='/list_classes/RELC'><button>Christianity</button></a>
+    <a href='/list_classes/RELG'><button>General Religion</button></a>
+    <a href='/list_classes/RELH'><button>Hinduism</button></a>
+    <a href='/list_classes/RELI'><button>Islam</button></a>
+    <a href='/list_classes/RELJ'><button>Judaism</button></a>
+    <a href='/list_classes/Special Topic'><button>Special Topic</button></a>
+</div>
+
+<button class="accordion">ROTC</button>
+<div class="panel">
+    <a href='/list_classes/AIRS'><button>Air Science</button></a>
+    <a href='/list_classes/MISC'><button>Military Science</button></a>
+    <a href='/list_classes/NAVC'><button>Naval Science</button></a>
+    <a href='/list_classes/UNST'><button>University Studies</button></a>
+</div>
+
+<button class="accordion">School of Continuing and Professional Studies</button>
+<div class="panel">
+    <a href='/list_classes/PSHM'><button>Health Sciences Management</button></a>
+    <a href='/list_classes/PSLP'><button>Leadership Program</button></a>
+    <a href='/list_classes/NCPR'><button>Non-Credit Professional Review</button></a>
+    <a href='/list_classes/PSPM'><button>Project Management</button></a>
+    <a href='/list_classes/PSPA'><button>Public Administration</button></a>
+</div>
+
+<button class="accordion">Seminars</button>
+<div class="panel">
+    <a href='/list_classes/COLA'><button>College Advising Seminar</button></a>
+    <a href='/list_classes/CASS'><button>College Art Scholars Seminar</button></a>
+    <a href='/list_classes/HSCI'><button>College Science Scholars Seminar</button></a>
+    <a href='/list_classes/PLAD'><button>Departmental Seminar</button></a>
+    <a href='/list_classes/LASE'><button>Liberal Arts Seminar</button></a>
+    <a href='/list_classes/USEM'><button>University Seminar</button></a>
+</div>
+
+<button class="accordion">Other Schools</button>
+<div class="panel">
+    <a href='/list_classes/ACCT'><button>Accouting</button></a>
+    <a href='/list_classes/ARCH'><button>Architecture</button></a>
+    <a href='/list_classes/ARH'><button>Architectural History</button></a>
+    <a href='/list_classes/ALAR'><button>Architecture and Landscape</button></a>
+    <a href='/list_classes/SARC'><button>Architecture School</button></a>
+    <a href='/list_classes/BUS'><button>Business</button></a>
+    <a href='/list_classes/GCNL'><button>Clinical Nurse Leader</button></a>
+    <a href='/list_classes/COMM'><button>Commerce</button></a>
+    <a href='/list_classes/CONC'><button>Commerce Non-Credit</button></a>
+    <a href='/list_classes/ENTP'><button>Entrepreneurship</button></a>
+    <a href='/list_classes/GBUS'><button>Graduate Business</button></a>
+    <a href='/list_classes/GBAC'><button>Graduate Business Analytics Comm.</button></a>
+    <a href='/list_classes/GCOM'><button>Graduate Commerce</button></a>
+    <a href='/list_classes/GNUR'><button>Graduate Nursing</button></a>
+    <a href='/list_classes/LAR'><button>Landscape Architecture</button></a>
+    <a href='/list_classes/LAW'><button>Law</button></a>
+    <a href='/list_classes/MED'><button>Medicine</button></a>
+    <a href='/list_classes/NURS'><button>Nursing</button></a>
+    <a href='/list_classes/NUCO'><button>Nursing Core</button></a>
+    <a href='/list_classes/NUIP'><button>Nursing Interprofessional</button></a>
+    <a href='/list_classes/PATH'><button>Pathology</button></a>
+    <a href='/list_classes/PHAR'><button>Pharmacology</button></a>
+    <a href='/list_classes/PHY'><button>Physiology</button></a>
+    <a href='/list_classes/PLAC'><button>Planning Application</button></a>
+    <a href='/list_classes/PC'><button>Procurement & Contracts Management</button></a>
+    <a href='/list_classes/PHS'><button>Public Health Sciences</button></a>
+    <a href='/list_classes/PLAN'><button>Urban & Environmental Planning</button></a>
+</div>
+
+<button class="accordion">Other</button>
+<div class="panel">
+    <a href='/list_classes/DEM'><button>[DEM]</button></a>
+    <a href='/list_classes/GCCS'><button>[GCCS]</button></a>
+    <a href='/list_classes/GHSS'><button>[GHSS]</button></a>
+    <a href='/list_classes/GSAS'><button>[GSAS]</button></a>
+    <a href='/list_classes/GSCI'><button>[GSCI]</button></a>
+    <a href='/list_classes/HHE'><button>[HHE]</button></a>
+    <a href='/list_classes/PSPS'><button>[PSPS]</button></a>
+    <a href='/list_classes/TURK'><button>[TURK]</button></a>
+    <a href='/list_classes/UNST'><button>[UNST]</button></a>
+</div>
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+        /* Toggle between adding and removing the "active" class,
+        to highlight the button that controls the panel */
+        this.classList.toggle("active");
+
+        /* Toggle between hiding and showing the active panel */
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+        panel.style.display = "none";
+        } else {
+        panel.style.display = "block";
+        }
+    });
+    }
+</script>
+
 {% endblock %}
