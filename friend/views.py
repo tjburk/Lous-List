@@ -21,7 +21,13 @@ def accept_friend_request(request, user_id):
     request = FriendRequest.objects.get(sender=sender, receiver=receiver)
     if request:
         # If the friend request exists, add friends to each other's friend lists and delete it
-        request.accept()
+        # Accept friend request and update sender and receiver
+        receiver_friend_list = FriendList.objects.get(user=receiver)
+        if receiver_friend_list:
+            receiver_friend_list.add_friend(sender)
+            sender_friend_list = FriendList.objects.get(user=sender)
+            if sender_friend_list:
+                sender_friend_list.add_friend(receiver)
         request.delete()
         messages.success(request, "Friend request accepted.")
     else:
