@@ -25,4 +25,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('list_classes/', include('list_classes.urls')),
     path('search/', include('search.urls'), name='search'),
+    path('accounts/profile/',TemplateView.as_view(template_name='account/profile.html'))
 ]
