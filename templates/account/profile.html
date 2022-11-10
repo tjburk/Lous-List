@@ -11,10 +11,22 @@
             <h1>Profile Page</h1>
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Friends: ADD LATER</div>
-            <div>SCHEDULE BELOW</div>
+            <form method="POST">
+                <div class="text_field">
+                    <input type="text" placeholder="Requested User Email">
+                </div>
+                <input type="submit" value="Send Request">
+            </form>
+            <form method="POST">
+                <div class="text_field">
+                    <input type="text" placeholder="Accepted User Email">
+                </div>
+                <input type="submit" value="Accept Request">
+            </form>
             <form method="POST" action={% url 'logout' %}>
+                {% csrf_token %}
                 <div class="logoutButton">
-                    <input href={% url 'logout' %} value="Logout">
+                    <input type="submit" value="Logout">
                 </div>
             </form>
         </div>
