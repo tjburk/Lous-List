@@ -141,3 +141,7 @@ input[type="submit"]{
 .socialaccount_providers {
   color: #232d4b;
 }
+
+.passReset {
+  color: white;
+}
