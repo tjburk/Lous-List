@@ -14,9 +14,14 @@
             <div>SCHEDULE BELOW</div>
             <form method="POST" action={% url 'logout' %}>
                 <div class="logoutButton">
-                    <input href={% url 'logout' %} value="Logout">
+                    <a href={% url 'logout' %}>Logout</a>
                 </div>
             </form>
         </div>
+        {% include 'friend/send_friend_request.html' %}
+        {% include 'friend/accept_friend_request.html' %}
+        {% include 'friend/decline_friend_request.html' %}
+        {% include 'friend/cancel_friend_request.html' %}
+        {% include 'friend/remove_friend.html' %}
     </body>
 </html>
