@@ -1,7 +1,7 @@
 
 from django.contrib.auth.models import User
-from list_classes.models import Course
 from django.db import models
+from django.utils import timezone
 
 # https://www.youtube.com/watch?v=hyJO4mkdwuM
 
@@ -46,10 +46,9 @@ class FriendRequest(models.Model):
     # Friend request consists of 2 parts
     # 1. A sender
     # 2. A receiver
-    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sender")
-    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receiver")
+    sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name="sender", default=None)
+    receiver = models.ForeignKey(User, on_delete=models.CASCADE, related_name="receiver", default=None)
     is_active = models.BooleanField(blank=True, null=False, default=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.sender.username
