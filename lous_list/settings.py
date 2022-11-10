@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'list_classes',
     'comment',
     'search',
+    'friend',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
