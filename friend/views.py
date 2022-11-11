@@ -5,9 +5,9 @@ from django.contrib import messages
 from django.http import HttpResponse
 
 
-def send_friend_request(request, username):
+def send_friend_request(request, user_email):
     sender = request.user
-    receiver = User.objects.get(username=username)
+    receiver = User.objects.get(email=user_email)
     # Create friend lists for the sender and receiver if they don't have them already
     try:
         FriendList.objects.get(user=sender)
@@ -29,9 +29,9 @@ def send_friend_request(request, username):
         return redirect("profile")
 
 
-def accept_friend_request(request, username):
+def accept_friend_request(request, user_email):
     receiver = request.user
-    sender = User.objects.get(username=username)
+    sender = User.objects.get(email=user_email)
     try:
         friend_request = FriendRequest.objects.get(sender=sender, receiver=receiver)
         # If the friend request exists, add friends to each other's friend lists and delete it
