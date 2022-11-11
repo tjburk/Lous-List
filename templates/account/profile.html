@@ -3,7 +3,9 @@
 <html lang="en">
     <head>
       {% load static %}
-      <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
         <title>Profile Page</title>
 </head>
     <body>
@@ -11,15 +13,19 @@
             <h1>Profile Page</h1>
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Friends: ADD LATER</div>
-            <form method="POST">
+            <form method="POST" action={% url 'friend:send_request' username='tjburk' %}>
+                {% csrf_token %}
                 <div class="text_field">
-                    <input type="text" placeholder="Requested User Email">
+                    <input type="text" placeholder="Requested User Email" name="send_email">
                 </div>
                 <input type="submit" value="Send Request">
             </form>
-            <form method="POST">
+            <form method="POST" action={% url 'friend:accept_request' username='tjburk' %}>
+                {% csrf_token %}
                 <div class="text_field">
-                    <input type="text" placeholder="Accepted User Email">
+                    <label>
+                        <input type="text" placeholder="Accepted User Email" name="accept_email">
+                    </label>
                 </div>
                 <input type="submit" value="Accept Request">
             </form>
@@ -29,6 +35,9 @@
                     <input type="submit" value="Logout">
                 </div>
             </form>
+            {% include 'friend/messages.html' %}
+            {% block content %}
+            {% endblock %}
         </div>
     </body>
 </html>

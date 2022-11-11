@@ -95,4 +95,4 @@ def update_course_db(request):
                 course.secondary_meetings_facility_description=c['meetings'][1]['facility_description']
             course.save()
 
-    return HttpResponseRedirect(reverse('list_classes:classes', args=['all']))
+    return HttpResponseRedirect(reverse(''))

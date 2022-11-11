@@ -8,15 +8,20 @@ from django.dispatch import receiver
 
 
 class FriendList(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="friendlist")
     friends = models.ManyToManyField(User, blank=True, related_name="friends")
 
     def __str__(self):
         return self.user.username
 
+    def add_friend(self, user):
+        if user not in self.friends.all():
+            self.friends.add(user)
+            self.save()
+
 
 # https://www.crunchydata.com/blog/extending-djangos-user-model-with-onetoonefield
-@receiver(post_save, sender=FriendList)
+@receiver(post_save, sender=User)
 def update_profile_signal(sender, instance, created, **kwargs):
     if created:
         FriendList.objects.create(user=instance)
