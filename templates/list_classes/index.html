@@ -1,5 +1,7 @@
 {% extends 'lous_list/base.html' %}
+{% load static %}
 {%block content %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
 <head>
     <title>Lou's List</title>
     <meta charset="utf-8">
@@ -15,7 +17,7 @@
         <ul style="list-style:none">
         {% for course in course_list %}
             <li>
-                <h2><a href="{% url 'list_classes:description' course.course_number %}">{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</a></h2>
+                <div class="header"><a href="{% url 'list_classes:description' course.course_number %}">{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</a></div>
                 <p>Units: {{ course.units }}</p>
                 <p>Type: {{ course.component }}</p>
                 <p>Days: {{ course.meetings_days }}</p>

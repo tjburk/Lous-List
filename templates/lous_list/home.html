@@ -2,6 +2,34 @@
 {%load static %}
 {%block content %}
 <link rel="stylesheet" href="{% static 'homes.css' %}">
+<style>
+    button {
+        display: inline-block;
+        margin: 40px 0 -19px 0;
+        padding: 10px 15px;
+        width: 33%;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #9caac6;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 3px #5a79a5;
+    }
+
+    button:hover {
+        background-color: #626a8a
+    }
+
+    button:active {
+        background-color: #757fa9;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+</style>
 <button class="accordion">Arts & Sciences</button>
 <div class="panel">
     <a href='/list_classes/HIAF'><button>African History</button></a>
@@ -140,7 +168,7 @@
     <a href='/list_classes/LATI'><button>Latin</button></a>
     <a href='/list_classes/LING'><button>Linguistics</button></a>
     <a href='/list_classes/KICH'><button>Maya K'iche</button></a>
-    <a href='/list_classes/MESA'><button>Middle Eastern & South Asian Languages & Cultures</button></a>
+    <a href='/list_classes/MESA'><button>Middle Eastern & South Asian Languages</button></a>
     <a href='/list_classes/PERS'><button>Persian</button></a>
     <a href='/list_classes/PETR'><button>Persian in Translation</button></a>
     <a href='/list_classes/POL'><button>Polish</button></a>
