@@ -20,14 +20,6 @@ class FriendList(models.Model):
             self.save()
 
 
-# https://www.crunchydata.com/blog/extending-djangos-user-model-with-onetoonefield
-@receiver(post_save, sender=User)
-def update_profile_signal(sender, instance, created, **kwargs):
-    if created:
-        FriendList.objects.create(user=instance)
-    instance.user.save()
-
-
 class FriendRequest(models.Model):
     # Friend request consists of 2 parts
     # 1. A sender
