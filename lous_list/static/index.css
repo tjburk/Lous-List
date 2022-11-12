@@ -1,0 +1,19 @@
+.header {
+    margin: 0 0 0 -50px;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    background: -webkit-gradient(linear, left top, left bottom, from(#5a79a5), to(#3d5475));
+    color: white;
+    font-size: 15px;
+}
+
+a:link {
+    color: white;
+    font-size: x-large;
+    text-decoration: none;
+}
+
+a:visited {
+    color: white;
+}

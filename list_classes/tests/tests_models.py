@@ -4,7 +4,7 @@ from list_classes.models import Course
 from comment.models import Comment
 
 
-class CourseModelTest(TestCase):
+class TestCourseModel(TestCase):
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
