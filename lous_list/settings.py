@@ -14,6 +14,17 @@ import os
 import sys
 from pathlib import Path
 
+from django.contrib.messages import constants as messages
+
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,6 +56,7 @@ INSTALLED_APPS = [
     'list_classes',
     'comment',
     'search',
+    'friend',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -55,6 +67,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -87,29 +100,29 @@ WSGI_APPLICATION = "lous_list.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-if not 'test' in sys.argv:
-    DATABASES = {
-
-    'default': {
-
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
-        'NAME': 'd6sq7o31jjoauf',
-
-        'USER': 'jpqjgwwzriajoy',
-
-        'PASSWORD': '8ee63a8ee83defd07fd28dbcf26abd77e3b5b2165f631a221e37f7795978cb3e',
-
-        'HOST': 'ec2-44-207-253-50.compute-1.amazonaws.com',
-
-        'PORT': '5432',
-
-    }
-
-}
-
-else:
-    DATABASES = {
+# if not 'test' in sys.argv:
+#     DATABASES = {
+#
+#     'default': {
+#
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#
+#         'NAME': 'd6sq7o31jjoauf',
+#
+#         'USER': 'jpqjgwwzriajoy',
+#
+#         'PASSWORD': '8ee63a8ee83defd07fd28dbcf26abd77e3b5b2165f631a221e37f7795978cb3e',
+#
+#         'HOST': 'ec2-44-207-253-50.compute-1.amazonaws.com',
+#
+#         'PORT': '5432',
+#
+#     }
+#
+# }
+#
+# else:
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, "db.sqlite3"),
@@ -162,7 +175,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Activate Django-Heroku.
 # Use this code to avoid the psycopg2 / django-heroku error!  
 # Do NOT import django-heroku above!
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend'
@@ -188,3 +200,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+

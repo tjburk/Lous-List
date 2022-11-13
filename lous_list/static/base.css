@@ -42,32 +42,3 @@ input[type="search"] {
   input[type="search"]::placeholder {
     color: #bbb;
   }
-
-  button[type="submit"] {
-    
-    overflow: hidden;
-    width: 35px;
-    padding: 0;
-    margin: 1px 0 0 -2px;
-    background: #ffffff;
-    border: none;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR28GQII1pC-xRTSO873XTfT7xRiAltO87cElyOE3oW&s") no-repeat;
-    background-size: 35px;
-    cursor: pointer;
-  }
-  
-  button[type="submit"]:hover {
-    opacity: 1;
-  }
-  
-.foot {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #444444;
-    color: white;
-    text-align: center;
-    }
