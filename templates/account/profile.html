@@ -12,19 +12,18 @@
         <div class="main">
             <h1>Profile Page</h1>
             <div class="text_field">Username: {{user.username}}</div>
-            <div class="text_field">Friends: ADD LATER</div>
             <div> {{user.email}}
-            <form method="POST" action={% url 'friend:send_request' user_email=user.email %}>
+            <form method="POST" action={% url 'friend:send_request' user_email='jla6zp@virginia.edu' %}>
                 {% csrf_token %}
                 <div class="text_field">
-                    <input type="text" placeholder="Requested Email" name="send_email">
+                    <input type="text" placeholder="Send Email" name="send_email">
                 </div>
                 <input type="submit" value="Send Friend Request">
             </form>
-            <form method="POST" action={% url 'friend:accept_request' user_email=user.email %}>
+            <form method="POST" action={% url 'friend:accept_request' user_email='jla6zp@virginia.edu' %}>
                 {% csrf_token %}
                 <div class="text_field">
-                    <input type="text" placeholder="Accepted Email" name="accept_email">
+                    <input type="text" placeholder="Accept Email" name="accept_email">
                 </div>
                 <input type="submit" value="Accept Friend Request">
             </form>
