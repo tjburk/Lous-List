@@ -12,7 +12,8 @@
         <div class="main">
             <h1>Profile Page</h1>
             <div class="text_field">Username: {{user.username}}</div>
-            <div> {{user.email}}
+            <div class="text_field">Email: {{user.email}}</div>
+            <div class="text_field">Friend Count: {{user.friends.count}}</div>
             <form method="POST" action={% url 'friend:send_request' user_email='jla6zp@virginia.edu' %}>
                 {% csrf_token %}
                 <div class="text_field">
