@@ -100,29 +100,29 @@ WSGI_APPLICATION = "lous_list.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
-# if not 'test' in sys.argv:
-#     DATABASES = {
-#
-#     'default': {
-#
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#
-#         'NAME': 'd6sq7o31jjoauf',
-#
-#         'USER': 'jpqjgwwzriajoy',
-#
-#         'PASSWORD': '8ee63a8ee83defd07fd28dbcf26abd77e3b5b2165f631a221e37f7795978cb3e',
-#
-#         'HOST': 'ec2-44-207-253-50.compute-1.amazonaws.com',
-#
-#         'PORT': '5432',
-#
-#     }
-#
-# }
-#
-# else:
-DATABASES = {
+if not 'test' in sys.argv:
+    DATABASES = {
+
+    'default': {
+
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+
+        'NAME': 'dfpfd1ac8o7fha',
+
+        'USER': 'npzulyhvowhbqf',
+
+        'PASSWORD': 'b4d8a2d64a76d68b59ab5e883405f76f4222f35821c561120110700d4e47a974',
+
+        'HOST': 'ec2-34-235-198-25.compute-1.amazonaws.com',
+
+        'PORT': '5432',
+
+    }
+
+}
+
+else:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, "db.sqlite3"),
