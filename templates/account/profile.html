@@ -13,14 +13,15 @@
             <h1>Profile Page</h1>
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Friends: ADD LATER</div>
-            <form method="POST" action={% url 'friend:send_request' user_email="ty_burkhardt@verizon.net" %}>
+            <div> {{user.email}}
+            <form method="POST" action={% url 'friend:send_request' user_email=user.email %}>
                 {% csrf_token %}
                 <div class="text_field">
                     <input type="text" placeholder="Requested Email" name="send_email">
                 </div>
                 <input type="submit" value="Send Friend Request">
             </form>
-            <form method="POST" action={% url 'friend:accept_request' user_email="ty_burkhardt@verizon.net" %}>
+            <form method="POST" action={% url 'friend:accept_request' user_email=user.email %}>
                 {% csrf_token %}
                 <div class="text_field">
                     <input type="text" placeholder="Accepted Email" name="accept_email">
