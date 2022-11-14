@@ -14,14 +14,14 @@
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Email: {{user.email}}</div>
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
-            <form method="POST" action={% url 'friend:send_request' user_email='jla6zp@virginia.edu' %}>
+            <form method="POST" action={%  url "friend:send_request" %}>
                 {% csrf_token %}
                 <div class="text_field">
                     <input type="text" placeholder="Send Email" name="send_email">
                 </div>
                 <input type="submit" value="Send Friend Request">
             </form>
-            <form method="POST" action={% url 'friend:accept_request' user_email='jla6zp@virginia.edu' %}>
+            <form method="POST" action={% url 'friend:accept_request' %}>
                 {% csrf_token %}
                 <div class="text_field">
                     <input type="text" placeholder="Accept Email" name="accept_email">
