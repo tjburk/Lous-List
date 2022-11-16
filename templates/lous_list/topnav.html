@@ -5,10 +5,10 @@
     <a href="/">
         <img src="{% static 'UVA_Logo.png' %}" alt="..." height="65">
     </a>
-    <!-- This section adds the settings button. If clicked redirects to settings page -->
+    <!-- This section adds the user page button. If clicked redirects to user page -->
     <div class="settings">
-        <a href=""> <!-- ADD LINK FOR settings PAGE HERE -->
-            <img align="right" src="{% static 'settings.png' %}" alt="...">
+        <a href={% url "friend:user_page" %}>
+            <img align="right" src="{% static 'user_page_icon.png' %}" alt="...">
         </a>
     </div>
     <!-- This section adds the profile button. If clicked redirects to profile page -->

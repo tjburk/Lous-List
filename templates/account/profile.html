@@ -14,30 +14,17 @@
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Email: {{user.email}}</div>
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
-            <a href="friends/">List of Users</a>
-            <form method="POST" action={%  url "friend:send_request" %}>
-                {% csrf_token %}
-                <div class="text_field">
-                    <input type="text" placeholder="Send Email" name="send_email">
-                </div>
-                <input type="submit" value="Send Friend Request">
-            </form>
-            <form method="POST" action={% url 'friend:accept_request' %}>
-                {% csrf_token %}
-                <div class="text_field">
-                    <input type="text" placeholder="Accept Email" name="accept_email">
-                </div>
-                <input type="submit" value="Accept Friend Request">
-            </form>
+            <br>
+            <a href={% url 'home' %}>
+                <button>
+                    Return Home
+                </button></a>
             <form method="POST" action={% url 'logout' %}>
                 {% csrf_token %}
                 <div class="logoutButton">
                     <input type="submit" value="Logout">
                 </div>
             </form>
-            {% include 'friend/messages.html' %}
-            {% block content %}
-            {% endblock %}
         </div>
     </body>
 </html>

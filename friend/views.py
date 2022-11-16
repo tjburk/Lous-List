@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from .models import FriendRequest, FriendList
 from django.contrib import messages
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+from django import template
+register = template.Library()
 
 
-def send_friend_request(request):
+def send_friend_request(request, user_id):
     sender = request.user
-    receiver_email = request.POST.get("send_email", None)
-    receiver = User.objects.get(email=receiver_email)
+    receiver = User.objects.get(id=user_id)
     # Create friend lists for the sender and receiver if they don't have them already
     try:
         FriendList.objects.get(user=sender)
@@ -22,17 +23,19 @@ def send_friend_request(request):
     try:
         FriendRequest.objects.get(sender=sender, receiver=receiver)
         messages.warning(request, "Friend request already sent.")
-        return redirect("profile")
+        return redirect("friend:user_page")
     except FriendRequest.DoesNotExist:
         FriendRequest.objects.create(sender=sender, receiver=receiver)
         messages.success(request, "Friend request sent.")
-        return redirect("profile")
+        return redirect("friend:user_page")
 
 
-def accept_friend_request(request):
+def accept_friend_request(request, user_id):
     receiver = request.user
-    sender_email = request.POST.get("accept_email", None)
-    sender = User.objects.get(email=sender_email)
+    sender = User.objects.get(id=user_id)
+    if sender in receiver.friends.all():
+        messages.warning(request, "Already friends.")
+        return redirect("friend:user_page")
     try:
         friend_request = FriendRequest.objects.get(sender=sender, receiver=receiver)
         # If the friend request exists, add friends to each other's friend lists and delete it
@@ -41,9 +44,39 @@ def accept_friend_request(request):
         sender.friendlist.add_friend(receiver)
         friend_request.delete()
         messages.success(request, "Friend request accepted.")
-        return redirect("profile")
+        return redirect("friend:user_page")
     except FriendRequest.DoesNotExist:
         messages.warning(request, "No friend request found.")
-        return redirect("profile")
+        return redirect("friend:user_page")
+
+
+def get_all_users(request):
+    # Set up context variables
+    # All Users
+    users = User.objects.all()
+
+    # All people that have sent requests to user
+    received_friend_requests = FriendRequest.objects.filter(receiver=request.user)
+    received_users = []
+    for friend_request in received_friend_requests:
+        received_users.append(friend_request.sender)
+
+    # All people that current user has sent friends requests to
+    sent_friend_requests = FriendRequest.objects.filter(sender=request.user)
+    sent_users = []
+    for friend_request in sent_friend_requests:
+        sent_users.append(friend_request.receiver)
+
+    # All user's friends
+    friends = []
+    friend_list_query = request.user.friends.all()
+    for friend_list in friend_list_query:
+        friends.append(friend_list.user_id)
+
+    return render(request, 'friend/all_users.html', {'users': users,
+                                                     'received_users': received_users,
+                                                     'sent_users': sent_users,
+                                                     'friends': friends})
+
 
 
