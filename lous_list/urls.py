@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
 from django.views.generic import TemplateView
+from . import views
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='lous_list/home.html'), name='home'),
@@ -26,5 +27,6 @@ urlpatterns = [
     path('list_classes/', include('list_classes.urls')),
     path('search/', include('search.urls'), name='search'),
     path('friend/', include('friend.urls'), name='friend'),
-    path('accounts/profile/',TemplateView.as_view(template_name='account/profile.html'), name='profile')
+    path('accounts/profile/',TemplateView.as_view(template_name='account/profile.html'), name='profile'),
+    path('accounts/profile/friends/', views.allUsers),
 ]

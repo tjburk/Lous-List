@@ -14,6 +14,7 @@
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Email: {{user.email}}</div>
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
+            <a href="friends/">List of Users</a>
             <form method="POST" action={%  url "friend:send_request" %}>
                 {% csrf_token %}
                 <div class="text_field">
