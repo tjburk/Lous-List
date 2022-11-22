@@ -12,6 +12,7 @@
         <div class="main">
             <h1>Profile Page</h1>
             <h3>User Info</h3>
+            {% if user.id in current_user_friend_ids %}
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Email: {{user.email}}</div>
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
@@ -30,6 +31,9 @@
                 {% endfor %}
             {% else %}
                 <p>No courses have been added to schedule.</p>
+            {% endif %}
+            {% else %}
+                <p>You need to be friends with this user to see their information</p>
             {% endif %}
             <a href={% url 'home' %}>
                 <button>
