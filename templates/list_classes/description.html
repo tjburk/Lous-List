@@ -48,6 +48,7 @@
         <h3>No components are available for this course.</h3>
     {% endif %}
     </section>
+    {% include 'comment/description.html' %}
+    <h3><a href="{% url 'list_classes:classes' subjects_displayed=course.subject%}">Back</a></h3>
 </body>
-{% include 'comment/description.html' %}
 </html>

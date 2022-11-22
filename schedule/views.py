@@ -31,6 +31,7 @@ def add_course_to_schedule(request, course_number):
         # Refresh current page
         return redirect(request.META.get('HTTP_REFERER'))
     # If course times overlap
+
     # Everything is good! Add course to schedule
     else:
         current_schedule.add_course(course_number)
