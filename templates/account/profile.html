@@ -12,7 +12,7 @@
         <div class="main">
             <h1>Profile Page</h1>
             <h3>User Info</h3>
-            {% if user.id in current_user_friend_ids %}
+            {% if user.id in current_user_friend_ids or user.id == current_user.id %}
             <div class="text_field">Username: {{user.username}}</div>
             <div class="text_field">Email: {{user.email}}</div>
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
