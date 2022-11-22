@@ -14,7 +14,7 @@
     <!-- This section adds the profile button. If clicked redirects to profile page -->
     <div class="prof">
         {% if user.is_authenticated %}
-            <a href='/accounts/profile'> <!-- ADD LINK FOR profile PAGE HERE (for now it just logs you out)-->
+            <a href='{% url 'profile' user_id=user.id%}'>
                 <img align="right" src="{% static 'profile.png' %}" alt="...">
             </a>
         {% else %}

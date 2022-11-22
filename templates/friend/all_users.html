@@ -69,7 +69,9 @@
     <h1>Send Friend Requests</h1>
     <h2>Current User: {{ user.username }}</h2>
     {% for person in users %}
-        <h4>Username: {{person.username}}</h4>
+        <a href='{% url 'profile' user_id=person.id%}'>
+        <h4>{{ person.username }}</h4>
+        </a>
         <!-- Already friends -->
         {% if person.id in friends %}
             <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >

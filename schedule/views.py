@@ -18,7 +18,7 @@ def get_schedule_courses(request):
         course = Course.objects.get(course_number=course_list.course_number)
         schedule_courses.append(course)
 
-    return render(request, 'account/profile.html', {'courses': schedule_courses})
+    return schedule_courses
 
 
 def add_course_to_schedule(request, course_number):
