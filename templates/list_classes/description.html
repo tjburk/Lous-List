@@ -9,8 +9,6 @@
 <body>
     <br/>
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
-    <!-- Line repeated because it was covered by header -->
-
     <p>Units: {{ course.units }}</p>
     <p>Type: {{ course.component }}</p>
     <p>Days: {{ course.meetings_days }}</p>
@@ -18,6 +16,12 @@
     <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
     <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
     <p>Location: {{ course.meetings_facility_description }}</p>
+    {% if user.is_authenticated %}
+        <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
+            {% csrf_token %}
+            <input type="submit" value="Add Course to Schedule">
+        </form>
+    {% endif %}
     <section>
     {% if component_list %}
         <h3>Available Components:</h3>
@@ -31,6 +35,12 @@
                 <p>Time: {{ component.meetings_start_time }} - {{ component.meetings_end_time }}</p>
                 <p>Instructor: {{component.instructor_name}} ({{ component.instructor_email }})</p>
                 <p>Enrollment Availability: {{ component.enrollment_total }}/{{ component.class_capacity }}</p>
+                {% if user.is_authenticated %}
+                    <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
+                        {% csrf_token %}
+                        <input type="submit" value="Add Course to Schedule">
+                    </form>
+                {% endif %}
             </li>
         {% endfor %}
         </ul>

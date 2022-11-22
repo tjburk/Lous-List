@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'comment',
     'search',
     'friend',
+    'schedule',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',

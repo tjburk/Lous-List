@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from .models import FriendRequest, FriendList
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django import template
-register = template.Library()
 
 
 def send_friend_request(request, user_id):
