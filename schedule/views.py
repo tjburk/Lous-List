@@ -2,18 +2,20 @@ from django.shortcuts import render, redirect
 from list_classes.models import Course
 from django.contrib import messages
 from schedule.models import Schedule
+from django.contrib.auth.models import User
 
 
-def get_schedule_courses(request):
+def get_schedule_courses(request, user_id):
     # If schedule doesn't exist, create one
+    user = User.objects.get(id=user_id)
     try:
-        Schedule.objects.get(user=request.user)
+        Schedule.objects.get(user=user)
     except Schedule.DoesNotExist:
-        Schedule.objects.create(user=request.user)
+        Schedule.objects.create(user=user)
 
     # All user's courses in schedule
     schedule_courses = []
-    course_list_query = request.user.schedule.courses.all()
+    course_list_query = user.schedule.courses.all()
     for course_list in course_list_query:
         course = Course.objects.get(course_number=course_list.course_number)
         schedule_courses.append(course)

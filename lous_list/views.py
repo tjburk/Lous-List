@@ -4,6 +4,7 @@ from schedule.views import get_schedule_courses
 
 
 def set_up_profile(request, user_id):
+    current_user = request.user
     user = User.objects.get(id=user_id)
-    schedule_courses = get_schedule_courses(request)
-    return render(request, 'account/profile.html', {'user': user, 'courses': schedule_courses})
+    courses = get_schedule_courses(request, user_id)
+    return render(request, 'account/profile.html', {'current_user': current_user, 'user': user, 'courses': courses})

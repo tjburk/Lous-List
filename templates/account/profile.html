@@ -17,17 +17,19 @@
             <div class="text_field">Friend Count: {{user.friends.count}}</div>
             <br>
             <h3>Schedule</h3>
-            {% if user.schedule.courses.exists %}
+            {% if courses %}
                 {% for course in courses %}
                     <p>{{ course.description }}: {{ course.meetings_days }} from
                         {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
-                    <form method="POST" action={% url 'schedule:delete_course' course_number=course.course_number %}>
-                        {% csrf_token %}
-                        <input type="submit" value="Delete Course from Schedule">
-                    </form>
+                    {% if user == current_user %}
+                        <form method="POST" action={% url 'schedule:delete_course' course_number=course.course_number %}>
+                            {% csrf_token %}
+                            <input type="submit" value="Delete Course from Schedule">
+                        </form>
+                    {% endif %}
                 {% endfor %}
             {% else %}
-                <p>No classes have been added to schedule.</p>
+                <p>No courses have been added to schedule.</p>
             {% endif %}
             <a href={% url 'home' %}>
                 <button>

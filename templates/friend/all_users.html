@@ -69,34 +69,37 @@
     <h1>Send Friend Requests</h1>
     <h2>Current User: {{ user.username }}</h2>
     {% for person in users %}
-        <a href='{% url 'profile' user_id=person.id%}'>
-        <h4>{{ person.username }}</h4>
-        </a>
-        <!-- Already friends -->
-        {% if person.id in friends %}
-            <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                {% csrf_token %}
-                <input type="button" value="You are Friends!">
-            </form>
-        <!-- Friend Request already sent -->
-        {% elif person in sent_users %}
-            <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                {% csrf_token %}
-                <input type="button" value="Friend Request Sent!">
-            </form>
-        <!-- Friend Request not already sent -->
-        {% else %}
-            <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                {% csrf_token %}
-                <input type="submit" value="Send Friend Request">
-            </form>
-        {% endif %}
-        <!-- Accept button only appears if there is a request -->
-        {% if person in received_users %}
-            <form method="POST" action={% url 'friend:accept_request' user_id=person.id %}>
-                {% csrf_token %}
-                <input type="submit" value="Accept Friend Request">
-            </form>
+        <!-- If person is not current user -->
+        {% if person.id != user.id %}
+            <a href='{% url 'profile' user_id=person.id%}'>
+                <h4>{{ person.username }}</h4>
+            </a>
+            <!-- Already friends -->
+            {% if person.id in friends %}
+                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
+                    {% csrf_token %}
+                    <input type="button" value="You are Friends!">
+                </form>
+                <!-- Friend Request already sent -->
+            {% elif person in sent_users %}
+                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
+                    {% csrf_token %}
+                    <input type="button" value="Friend Request Sent!">
+                </form>
+            <!-- Friend Request not already sent -->
+            {% else %}
+                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
+                    {% csrf_token %}
+                    <input type="submit" value="Send Friend Request">
+                </form>
+            {% endif %}
+            <!-- Accept button only appears if there is a request -->
+            {% if person in received_users %}
+                <form method="POST" action={% url 'friend:accept_request' user_id=person.id %}>
+                    {% csrf_token %}
+                    <input type="submit" value="Accept Friend Request">
+                </form>
+            {% endif %}
         {% endif %}
         <br/>
     {% endfor %}
