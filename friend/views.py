@@ -73,9 +73,9 @@ def get_all_users(request):
             friends.append(friend_list.user_id)
 
         return render(request, 'friend/all_users.html', {'users': users,
-                                                        'received_users': received_users,
-                                                        'sent_users': sent_users,
-                                                        'friends': friends})
+                                                         'received_users': received_users,
+                                                         'sent_users': sent_users,
+                                                         'friends': friends})
     else:
         return render(request, 'friend/all_users.html')
 
