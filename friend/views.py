@@ -50,31 +50,34 @@ def accept_friend_request(request, user_id):
 
 def get_all_users(request):
     # Set up context variables
-    # All Users
-    users = User.objects.all()
+    if request.user.is_authenticated:
+        # All Users
+        users = User.objects.all()
 
-    # All people that have sent requests to user
-    received_friend_requests = FriendRequest.objects.filter(receiver=request.user)
-    received_users = []
-    for friend_request in received_friend_requests:
-        received_users.append(friend_request.sender)
+        # All people that have sent requests to user
+        received_friend_requests = FriendRequest.objects.filter(receiver=request.user)
+        received_users = []
+        for friend_request in received_friend_requests:
+            received_users.append(friend_request.sender)
 
-    # All people that current user has sent friends requests to
-    sent_friend_requests = FriendRequest.objects.filter(sender=request.user)
-    sent_users = []
-    for friend_request in sent_friend_requests:
-        sent_users.append(friend_request.receiver)
+        # All people that current user has sent friends requests to
+        sent_friend_requests = FriendRequest.objects.filter(sender=request.user)
+        sent_users = []
+        for friend_request in sent_friend_requests:
+            sent_users.append(friend_request.receiver)
 
-    # All user's friends
-    friends = []
-    friend_list_query = request.user.friends.all()
-    for friend_list in friend_list_query:
-        friends.append(friend_list.user_id)
+        # All user's friends
+        friends = []
+        friend_list_query = request.user.friends.all()
+        for friend_list in friend_list_query:
+            friends.append(friend_list.user_id)
 
-    return render(request, 'friend/all_users.html', {'users': users,
-                                                     'received_users': received_users,
-                                                     'sent_users': sent_users,
-                                                     'friends': friends})
+        return render(request, 'friend/all_users.html', {'users': users,
+                                                        'received_users': received_users,
+                                                        'sent_users': sent_users,
+                                                        'friends': friends})
+    else:
+        return render(request, 'friend/all_users.html')
 
 
 
