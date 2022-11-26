@@ -24,6 +24,13 @@ def get_schedule_courses(request, user_id):
 
 
 def add_course_to_schedule(request, course_number):
+    # If schedule doesn't exist, create one
+    user = request.user
+    try:
+        Schedule.objects.get(user=user)
+    except Schedule.DoesNotExist:
+        Schedule.objects.create(user=user)
+
     # Add course if it doesn't already exist
     current_schedule = request.user.schedule
 
