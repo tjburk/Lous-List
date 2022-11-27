@@ -36,7 +36,7 @@
                 <p>Instructor: {{component.instructor_name}} ({{ component.instructor_email }})</p>
                 <p>Enrollment Availability: {{ component.enrollment_total }}/{{ component.class_capacity }}</p>
                 {% if user.is_authenticated %}
-                    <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
+                    <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
                         {% csrf_token %}
                         <input type="submit" value="Add Course to Schedule">
                     </form>

@@ -10,13 +10,11 @@ class Schedule(models.Model):
     def __str__(self):
         return self.user.username
 
-    def add_course(self, course_number):
-        course = Course.objects.get(course_number=course_number)
+    def add_course(self, course):
         self.courses.add(course)
         self.save()
 
-    def delete_course(self, course_number):
-        course = Course.objects.get(course_number=course_number)
+    def delete_course(self, course):
         self.courses.remove(course)
         self.save()
 
