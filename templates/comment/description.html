@@ -13,5 +13,10 @@
     <br/><br/>
     {% endfor %}
 {% endif %}
-<a href="{% url 'list_classes:comment:add_comment' course.pk%}">Add Comment</a>
+<a href="{% url 'list_classes:comment:add_comment' course.pk%}">
+    <button>
+        Add Comment
+    </button>
+</a>
+
 <br/><br/>

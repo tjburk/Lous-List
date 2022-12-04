@@ -35,10 +35,7 @@
             {% else %}
                 <p>You need to be friends with this user to see their information</p>
             {% endif %}
-            <a href={% url 'home' %}>
-                <button>
-                    Return Home
-                </button></a>
+            <hr>
             {% if user.id == current_user.id %}
             <form method="POST" action={% url 'logout' %}>
                 {% csrf_token %}
@@ -47,6 +44,10 @@
                 </div>
             </form>
             {% endif %}
+            <a href={% url 'home' %}>
+                    Return Home
+            </a>
+            <br/><br/>
         </div>
     </body>
 </html>
