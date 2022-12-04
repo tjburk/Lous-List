@@ -35,6 +35,13 @@
             {% else %}
                 <p>You need to be friends with this user to see their information</p>
             {% endif %}
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {{ message }}
+            {% endfor %}
+            </ul>
+            {% endif %}
             <hr>
             {% if user.id == current_user.id %}
             <form method="POST" action={% url 'logout' %}>

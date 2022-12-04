@@ -8,6 +8,13 @@
 </head>
 <body>
     <h1>Course Description</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
     <p>Units: {{ course.units }}</p>
     <p>Type: {{ course.component }}</p>
