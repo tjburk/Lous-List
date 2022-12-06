@@ -49,7 +49,7 @@ def add_course_to_schedule(request, course_number):
     course_list_query = user.schedule.courses.all()
     for course_list in course_list_query:
         course_in_list = Course.objects.get(course_number=course_list.course_number)
-        if((course_in_list.meetings_days in course_days) or (course_days in course_in_list.meetings_days)):
+        if(course_in_list.meetings_days in course_days) or (course_days in course_in_list.meetings_days):
             listCourse_time_start=course_in_list.meetings_start_time
             listCourse_time_end=course_in_list.meetings_end_time
             

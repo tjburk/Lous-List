@@ -11,17 +11,17 @@
 <body>
     <h1>Course Description</h1>
     {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    {% if 'course' in message %}
-                        {{ message }}
-                    {% else %}
-                        Hello
-                    {% endif %}
+        <ul class="messages">
+            {% for message in messages %}
+                {{ message }}
             {% endfor %}
-            </ul>
-            {% endif %}
+        </ul>
+    {% endif %}
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
+    <form class='returnForm' method="GET" onclick="history.back()">
+        {% csrf_token %}
+        <input class='return' type="button" value="Back" align='left'>
+    </form>
     <p>Units: {{ course.units }}</p>
     <p>Type: {{ course.component }}</p>
     <p>Days: {{ course.meetings_days }}</p>
