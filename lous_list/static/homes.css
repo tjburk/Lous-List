@@ -1,37 +1,16 @@
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-    background: rgb(179, 176, 176);
-    color: #000;
-    /* text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff; */
-    cursor: pointer;
-    padding: 13px;
-    width: 100%;
-    text-align: left;
-    border: none;
-    outline: none;
-    transition: 0.7s;
-    position: inherit;
-    /* margin-bottom: 30px; */
-    margin: 80px 0 -100px 0;
-    font-family: "Times New Roman", Times, serif;
-    font-size: xx-large;
-    border-radius: 25px;
-  }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .accordion:hover {
-    background-color: #737687;
-  }
-  
-  /* Style the accordion panel. Note: hidden by default */
-  .panel {
-    padding: 0 18px;
-    width: inherit;
-    background: #737687;
-    display: none;
-    overflow: hidden;
-    margin-bottom: 30px;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #bedfe8;
+}
   
   /* CSS */
   .section {
@@ -60,3 +39,103 @@
     background-color: #b0b2c2;
     transform: translateY(4px);
 }
+
+.accordion {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 80px;
+}
+
+.accordionF {
+  width: 90%;
+  max-width: 1000px;
+  margin-top: 80px;
+}
+.accordion-item {
+  background-color: white;
+  color: #111;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.25);
+}
+.accordion-item-header {
+  border-radius: 0.5rem;
+  padding: 0.5rem 3rem 0.5rem 1rem;
+  min-height: 3.5rem;
+  line-height: 1.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.accordion-item-header::after {
+  content: '+';
+  font-size: 20px;
+  position: absolute;
+  right: 1rem;
+}
+.accordion-item-header.active::after {
+  content: '-';
+}
+.accordion-item-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordion-item-body-content {
+  padding: 1rem;
+  line-height: 1.5rem;
+  border-top: 1px solid;
+  border-image: #34495e, transparent;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+}
+/* FIGURE OUT WHERE PADDING TOP NEEDS TO BE CHANGED */
+
+    input[type=submit] {
+      width: 100%;
+      background-color: #007acc;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 53px;
+    }
+
+    input[type=button] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 53px;
+    }
+    
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    .profileLink {
+      width: 100%;
+      background-color: #007acc;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .profileLink:hover {
+      background-color: #0797f7;
+    }
+
+

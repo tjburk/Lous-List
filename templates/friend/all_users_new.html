@@ -1,71 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-      {% load static %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
-        <title>Users Page</title>
-    </head>
-    <body>
-    <div class="main">
-        <div class='head'>
-            <div class='buttonWrapper'>
-                <form class='returnForm' method="GET" action={% url 'home' %}>
-                    {% csrf_token %}
-                    <div class="returnButton">
-                        <input class='return' type="submit" value="<" align='left'>
-                    </div>
-                </form>
-            </div>
-            <div class='headerWrapper'>
-                <h1>Users Page</h1>
-                <hr>
-            </div>
-        </div>
-        {% if user.is_authenticated %}
-        {% for person in users %}
-            <!-- If person is not current user -->
-            {% if person.id != user.id %}
-                <a href='{% url 'profile' user_id=person.id%}'>
-                    <h2>{{ person.username }}</h2>
-                </a>
-                <!-- Already friends -->
-                {% if person.id in friends %}
-                    <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                        {% csrf_token %}
-                        <input class="friends" type="button" value="You are Friends!">
-                    </form>
-                    <!-- Friend Request already sent -->
-                {% elif person in sent_users %}
-                    <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                        {% csrf_token %}
-                        <input class="sent" type="button" value="Friend Request Sent!">
-                    </form>
-                <!-- Friend Request not already sent -->
-                {% else %}
-                    <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                        {% csrf_token %}
-                        <input class="send" type="submit" value="Send Friend Request">
-                    </form>
-                {% endif %}
-                <!-- Accept button only appears if there is a request -->
-                {% if person in received_users %}
-                    <form method="POST" action={% url 'friend:accept_request' user_id=person.id %}>
-                        {% csrf_token %}
-                        <input class="accept" type="submit" value="Accept Friend Request">
-                    </form>
-                {% endif %}
-                <br>
+{% extends 'lous_list/base.html' %}
+{%load static %}
+{%block content %}
+<link rel="stylesheet" href="{% static 'homes.css' %}">
+<div class="accordionF">
+    <div class="accordion-item">
+      <div class="accordion-item-header">Friends</div>
+      <div class="accordion-item-body">
+        <div class="accordion-item-body-content">
+            {% if user.is_authenticated %}
+                {% for person in users %}
+                    {% if person.id in friends %}
+                    <ul>
+                        <li>
+                            <a>{{person.username}}</a>
+                            <a href='{% url 'profile' user_id=person.id%}'>
+                                <button class='profileLink'>{{person.username}} 's Profile</button>
+                            </a>
+                        </li>
+                    </ul>
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
-        {% else %}
-            <h1>Please log in first before you view other users.</h1>
-            <form>
-                {% csrf_token %}
-                <input type="button" value="Back" onclick="history.back()">
-            </form>
-        {% endif %}
         </div>
-    </body>
-</html>
+      </div>
+    </div>
+    <div class="accordion-item">
+        <div class="accordion-item-header">All Users</div>
+        <div class="accordion-item-body">
+          <div class="accordion-item-body-content">
+            {% if user.is_authenticated %}
+                {% for person in users %}
+                    {% if person.id not in friends %}
+                        <ul>
+                            <li>
+                                <a>{{person.username}}</a>
+                                    <a>
+                                        {% if person in sent_users %}
+                                            <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
+                                                {% csrf_token %}
+                                                <input class="sent" type="button" value="Friend Request Sent!">
+                                            </form>
+                                        <!-- Friend Request not already sent -->
+                                        {% else %}
+                                            <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
+                                                {% csrf_token %}
+                                                <input class="send" type="submit" value="Send Friend Request">
+                                            </form>
+                                        {% endif %}
+                                        <!-- Accept button only appears if there is a request -->
+                                        {% if person in received_users %}
+                                            <form method="POST" action={% url 'friend:accept_request' user_id=person.id %}>
+                                                {% csrf_token %}
+                                                <input class="accept" type="submit" value="Accept Friend Request">
+                                            </form>
+                                        {% endif %}
+                                    </a>
+                            </li>
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+  </div>
+
+<script>
+    const accordionItemHeaders = document.querySelectorAll(".accordion-item-header");
+    accordionItemHeaders.forEach(accordionItemHeader => {
+    accordionItemHeader.addEventListener("click", event => {
+
+        accordionItemHeader.classList.toggle("active");
+        const accordionItemBody = accordionItemHeader.nextElementSibling;
+        if(accordionItemHeader.classList.contains("active")) {
+        accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "px";
+        }
+        else {
+        accordionItemBody.style.maxHeight = 0;
+        }  
+    });
+    });
+</script>
+
+{% endblock %}
