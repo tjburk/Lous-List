@@ -1,6 +1,6 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-    background: rgb(179, 176, 176);
+    background: -webkit-gradient(linear, left top, left bottom, from(#c3c6d9), to(#a0a2ad));;
     color: #000;
     /* text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff; */
     cursor: pointer;
@@ -25,12 +25,13 @@
   
   /* Style the accordion panel. Note: hidden by default */
   .panel {
-    padding: 0 18px;
+    padding: 0 8px 20px 8px;
     width: inherit;
     background: #737687;
     display: none;
     overflow: hidden;
     margin-bottom: 30px;
+    border-radius: 15px 15px 10px 10px;
   }
   
   /* CSS */
