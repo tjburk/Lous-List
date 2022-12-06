@@ -10,7 +10,22 @@
 </head>
     <body>
         <div class="main">
-            <h1>Profile Page</h1>
+            <div class='head'>
+                <div class='buttonWrapper'>
+                    <form class='returnForm' method="GET" action={% url 'home' %}>
+                        {% csrf_token %}
+                        <div class="returnButton">
+                            <input class='return' type="submit" value="<" align='left'>
+                        </div>
+                    </form>
+                </div>
+                <div class='headerWrapper'>
+                    <h1>Profile Page</h1>
+                </div>
+                <div class='buttonWrapper'>
+                </div>
+            </div>
+            <div class='underline'></div>
             <h3>User Info</h3>
             {% if user.id in current_user_friend_ids or user.id == current_user.id %}
             <div class="text_field">Username: {{user.username}}</div>
@@ -43,19 +58,11 @@
             </ul>
             {% endif %}
             <hr>
-            <form method="POST" onclick="history.back()">
-                {% csrf_token %}
-                <input type="button" value="Back">
-            </form>
-            <form method="GET" action={% url 'home' %}>
-                {% csrf_token %}
-                <input type="submit" value="Return Home">
-            </form>
             {% if user.id == current_user.id %}
             <form method="POST" action={% url 'logout' %}>
                 {% csrf_token %}
                 <div class="logoutButton">
-                    <input type="submit" value="Logout">
+                    <input class='logout' type="submit" value="Logout">
                 </div>
             </form>
             {% endif %}
