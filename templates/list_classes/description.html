@@ -53,6 +53,10 @@
                                                         <b>Type: </b>{{ component.component }}<br>
                                                         <b>Days: </b>{{ component.meetings_days }}<br>
                                                         <b>Time: </b>{{ component.meetings_start_time }} - {{ component.meetings_end_time }}<br>
+                                                        {% if component.secondary_meetings_days != "-" %}
+                                                            Secondary Days: {{ course.secondary_meetings_days }}<br>
+                                                            Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
+                                                        {% endif %}
                                                         <b>Instructor: </b>{{component.instructor_name}} ({{ component.instructor_email }})<br>
                                                         <b>Location: </b>{{component.meetings_facility_description}}<br>
                                                         <b>Enrollment Availability: </b>{{ component.enrollment_total }}/{{ component.class_capacity }}<br>
@@ -84,19 +88,6 @@
             {% endfor %}
         {% endif %}
         </ul>
-        {% comment %}
-            {% if component.secondary_meetings_days != "-" %}
-                <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
-                <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
-            {% endif %}
-            {% if user.is_authenticated %}
-                <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
-                    {% csrf_token %}
-                    <input type="submit" value="Add Course to Schedule">
-                </form>
-            {% endif %}
-        </ul>
-        {% endcomment %}
     {% else %}
         <h3>No components are available for this course.</h3>
     {% endif %}
