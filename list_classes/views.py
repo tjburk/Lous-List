@@ -14,7 +14,8 @@ def description(request, course_number):
     component_list = Course.objects.filter(component__in=['LAB', 'DIS'],
                                            catalog_number=course.catalog_number,
                                            subject=course.subject)
-    return render(request, "list_classes/description.html", {'course': course, 'component_list': component_list})
+    return render(request, "list_classes/description.html", {'course': course,
+                                                             'component_list': component_list})
 
 
 class IndexView(generic.ListView):

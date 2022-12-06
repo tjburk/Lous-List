@@ -12,7 +12,7 @@
         <div class="main">
             <div class='head'>
                 <div class='buttonWrapper'>
-                    <form class='returnForm' method="GET" onclick="history.back()">
+                    <form class='returnForm' method="GET" onclick=goBack()>
                         {% csrf_token %}
                         <div class="returnButton">
                             <input class='return' type="button" value="<" align='left'>
@@ -75,4 +75,11 @@
             <br/><br/>
         </div>
     </body>
+    <script>
+        function goBack() {
+            if(document.referrer.includes(window.location.host)){
+                window.history.back();
+            }
+        }
+    </script>
 </html>
