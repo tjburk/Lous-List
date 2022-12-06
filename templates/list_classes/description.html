@@ -10,6 +10,17 @@
 </head>
 <body>
     <h1>Course Description</h1>
+    {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    {% if 'course' in message %}
+                        {{ message }}
+                    {% else %}
+                        Hello
+                    {% endif %}
+            {% endfor %}
+            </ul>
+            {% endif %}
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
     <p>Units: {{ course.units }}</p>
     <p>Type: {{ course.component }}</p>
@@ -68,6 +79,5 @@
     {% endif %}
     </section>
     {% include 'comment/description.html' %}
-    <h3><a href="{% url 'list_classes:classes' subjects_displayed=course.subject%}">Back</a></h3>
 </body>
 </html>

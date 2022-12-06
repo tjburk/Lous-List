@@ -3,53 +3,10 @@
 {% include 'lous_list/base.html' %}
 
 <head>
+    {% load static %}
     <title>Commenting Page</title>
+    <link rel="stylesheet" href="{% static 'add_comment.css' %}">
 </head>
-<style>
-    input[id=userNameField], select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 1px;
-      box-sizing: border-box;
-    }
-
-    form{
-        display:block;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    input[type=submit] {
-      width: 100%;
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-    
-    div.special {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-    }
-</style>
 <main>
     {% if user.is_authenticated %}
         <h2>Add Comment</h2>

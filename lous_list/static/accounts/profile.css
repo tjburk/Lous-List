@@ -81,6 +81,10 @@ body {
     outline: none;
   }
 
+  input[class='logout']:hover {
+    background-color: #465c9f;
+  }
+
   input[class="return"]{
     height: 30px;
     border: 1px solid;
@@ -92,6 +96,23 @@ body {
     cursor: pointer;
     outline: none;
     align-self: left;
+  }
+
+  input[class="delete"]{
+    height: 30px;
+    border: 1px solid;
+    background: #232d4b;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #e9f4fb;
+    font-weight: 400;
+    cursor: pointer;
+    outline: none;
+    align-self: left;
+  }
+
+  input[class='return']:hover {
+    background-color: #465c9f;
   }
 
   .head {

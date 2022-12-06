@@ -74,6 +74,10 @@ input[type="submit"]{
   outline: none;
 }
 
+input[type='submit']:hover {
+  background-color: #465c9f;
+}
+
 
 
 .signup {

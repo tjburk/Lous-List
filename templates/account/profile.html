@@ -40,7 +40,7 @@
                     {% if user == current_user %}
                         <form method="POST" action={% url 'schedule:delete_course' course_number=course.course_number %}>
                             {% csrf_token %}
-                            <input type="submit" value="Delete Course from Schedule">
+                            <input class='delete' type="submit" value="Delete Course from Schedule">
                         </form>
                     {% endif %}
                 {% endfor %}
