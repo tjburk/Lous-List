@@ -24,7 +24,6 @@
         {% endif %}
     </div>
     <!-- Adds a search bar that redirects to whatever action form we have by clicking enter-->
-    {% if user.is_authenticated %}
     <div class="search-container">
         <form action={% url 'search:search' %} method="get">
             <input name="search_query" type="text" placeholder="" id="SearchBar">
@@ -32,10 +31,15 @@
         </form>
     </div>
 
-    <script>
-        var username="{{ user.username }}";
-        document.getElementById("SearchBar").placeholder = "Searching for '" +username+"'";
-    </script>
+    {% if user.is_authenticated %}
+        <script>
+            var username="{{ user.username }}";
+            document.getElementById("SearchBar").placeholder = "Searching as '" +username+"'";
+        </script>
+    {% else %}
+        <script>
+            document.getElementById("SearchBar").placeholder = "Searching as guest";
+        </script>
     {% endif %}
 
 </nav>
