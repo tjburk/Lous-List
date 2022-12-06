@@ -42,6 +42,11 @@ def accept_friend_request(request, user_id):
         sender.friendlist.add_friend(receiver)
         friend_request.delete()
         messages.success(request, "Friend request accepted.")
+        try:
+            friend_request = FriendRequest.objects.get(sender=receiver, receiver=sender)
+            friend_request.delete()
+        except FriendRequest.DoesNotExist:
+            pass
         return redirect("friend:user_page")
     except FriendRequest.DoesNotExist:
         messages.warning(request, "No friend request found.")
@@ -72,12 +77,12 @@ def get_all_users(request):
         for friend_list in friend_list_query:
             friends.append(friend_list.user_id)
 
-        return render(request, 'friend/all_users.html', {'users': users,
-                                                         'received_users': received_users,
-                                                         'sent_users': sent_users,
-                                                         'friends': friends})
+        return render(request, 'friend/all_users_new.html', {'users': users,
+                                                             'received_users': received_users,
+                                                             'sent_users': sent_users,
+                                                             'friends': friends})
     else:
-        return render(request, 'friend/all_users.html')
+        return render(request, 'friend/all_users_new.html')
 
 
 

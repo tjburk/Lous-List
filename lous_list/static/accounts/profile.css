@@ -1,39 +1,70 @@
-body {
+html {
     margin: 0;
     padding: 0;
     background: linear-gradient(90deg,#E57200, #232d4b);
-    height: 100vh;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  
+
+  input[class=send] {
+      width: 75%;
+      background-color: #007acc;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+  input[class=accept] {
+      width: 75%;
+      background-color: #007acc;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+  input[class=sent] {
+      width: 75%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[class=friends] {
+      width: 75%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
   button {
     margin: 1rem;
   }
-  
+
+  h2{
+    margin: 0;
+  }
+
   .main {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     width: 400px;
     background: white;
     border-radius: 10px;
     text-align: center;
-  }
-  
-  .main h1 {
-    text-align: center;
-    padding: 0 0 0 0;
-    justify-self: center;
-    /* margin-left: 25px; */
-  }
-  
-  .main form {
-    padding: 0 40px;
-    box-sizing: border-box;
   }
 
   .returnForm {
@@ -41,13 +72,13 @@ body {
     width: 50%;
     box-sizing: border-box;
   }
-  
+
   form .text_field {
     position: relative;
     border-bottom: 2px solid #adadad;
     margin: 30px 0;
   }
-  
+
   .text_field input {
     width: 100%;
     padding: 0 5px;
@@ -57,7 +88,7 @@ body {
     background: none;
     outline: none
   }
-  
+
   .text_field label {
     position: absolute;
     top: 50%;
@@ -67,7 +98,7 @@ body {
     font-size: 16px;
     pointer-events: none;
   }
-  
+
   input[class="logout"]{
     width: 100%;
     height: 50px;
@@ -91,7 +122,6 @@ body {
     font-weight: 700;
     cursor: pointer;
     outline: none;
-    align-self: left;
   }
 
   .head {
@@ -112,9 +142,7 @@ body {
   .underline {
     border-bottom: 1px solid silver;
   }
-  
-  
-  
+
   .signup {
     margin: 30px 0;
     text-align: center;
