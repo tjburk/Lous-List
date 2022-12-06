@@ -22,6 +22,10 @@
                 <p>Type: {{ course.component }}</p>
                 <p>Days: {{ course.meetings_days }}</p>
                 <p>Time: {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
+                {% if course.secondary_meetings_days != "-" %}
+                    <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
+                    <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
+                {% endif %}
                 <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
                 <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
             </li>

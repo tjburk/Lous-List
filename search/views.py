@@ -19,6 +19,7 @@ class SearchResultsView(ListView):
         search_query = self.request.GET.get("search_query")
         queryset = Course.objects.filter(
             Q(description__icontains=search_query) |
+            Q(catalog_number__icontains=search_query) |
             Q(instructor_name__icontains=search_query) |
             Q(meetings_facility_description__icontains=search_query) |
             Q(secondary_meetings_facility_description__icontains=search_query) |

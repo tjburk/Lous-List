@@ -52,14 +52,14 @@
 </style>
 <main>
     {% if user.is_authenticated %}
-        <h2>Add comment</h2>
+        <h2>Add Comment</h2>
         <h1>Add Comment to Course</h1>
         <br/><br/>
         <div class="form-group special">
             <form method="POST" style="float: left">
                 {% csrf_token %}
                 <div class="form-group special">
-                    <label for="Name">Name of Commentor</label>
+                    <label for="Name">Name of Commenter</label>
                     {{ form.name }}
                     <small id="NameFill" class="form-text text-muted">You may change the display name for the comment.</small>
                 </div>
