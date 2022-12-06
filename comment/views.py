@@ -4,7 +4,6 @@ from .models import Comment
 from .forms import AddCommentForm
 
 
-# Create your views here.
 class AddCommentView(CreateView):
     model = Comment
     form_class = AddCommentForm
@@ -14,4 +13,5 @@ class AddCommentView(CreateView):
     def form_valid(self, form):
         form.instance.course_id=self.kwargs['course_number']
         return super().form_valid(form)
+
     
