@@ -1,6 +1,6 @@
 /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
-    background: grey;
+    background: rgb(179, 176, 176);
     color: #000;
     /* text-shadow: 1px 0 0 #fff, 0 -1px 0 #fff, 0 1px 0 #fff, -1px 0 0 #fff; */
     cursor: pointer;
@@ -11,10 +11,11 @@
     outline: none;
     transition: 0.7s;
     position: inherit;
-    margin-bottom: 30px;
+    /* margin-bottom: 30px; */
     margin: 80px 0 -100px 0;
     font-family: "Times New Roman", Times, serif;
     font-size: xx-large;
+    border-radius: 25px;
   }
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -33,7 +34,7 @@
   }
   
   /* CSS */
-  /* button {
+  .section {
     display: inline-block;
     margin: 40px 0 -19px 0;
     padding: 10px 15px;
@@ -51,11 +52,11 @@
     font-size: x-large;
 }
 
-button:hover {
+.section:hover {
     background-color: #c3c6d9
 }
 
-button:active {
+.section:active {
     background-color: #b0b2c2;
     transform: translateY(4px);
-} */
+}

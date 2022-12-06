@@ -1,0 +1,39 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+        <title>Profile Page</title>
+</head>
+    <body>
+        <div class="main">
+            <div class='head'>
+                <div class='buttonWrapper'>
+                    <form class='returnForm' method="GET" action={% url 'home' %}>
+                        {% csrf_token %}
+                        <div class="returnButton">
+                            <input class='return' type="submit" value="<" align='left'>
+                        </div>
+                    </form>
+                </div>
+                <div class='headerWrapper'>
+                    <h1>Users Page</h1>
+                </div>
+                <div class='buttonWrapper'>
+                </div>
+            </div>
+            <div class='underline'></div>
+            <form action="#">
+            <select name="languages" id="lang">
+            {% for person in users %}
+                    <option value="select">{{person.username}}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </body>
+</html>
