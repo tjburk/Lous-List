@@ -65,12 +65,19 @@
             {% endif %}
             <hr>
             {% if user.id == current_user.id %}
-            <form method="POST" action={% url 'logout' %}>
-                {% csrf_token %}
-                <div class="logoutButton">
-                    <input class='logout' type="submit" value="Logout">
-                </div>
-            </form>
+                <form method="POST" action={% url 'logout' %}>
+                    {% csrf_token %}
+                    <div class="logoutButton">
+                        <input class='logout' type="submit" value="Logout">
+                    </div>
+                </form>
+            {% else %}
+                <form method="POST" action={% url 'list_classes:comment:add_comment_user' user_id=user.id%}>
+                    {% csrf_token %}
+                    <div class="logoutButton">
+                        <input class='logout' type="submit" value="Add Comment">
+                    </div>
+                </form>
             {% endif %}
             <br/><br/>
         </div>

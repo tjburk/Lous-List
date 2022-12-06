@@ -13,7 +13,9 @@
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-                {{ message }}
+                {% if "warning" in message.tags %}
+                    <p>{{ message }}</p>
+                {% endif %}
             {% endfor %}
         </ul>
     {% endif %}

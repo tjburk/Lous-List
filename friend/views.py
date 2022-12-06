@@ -20,7 +20,7 @@ def send_friend_request(request, user_id):
     # Create a friend request if one doesn't already exist
     try:
         FriendRequest.objects.get(sender=sender, receiver=receiver)
-        messages.warning(request, "Friend request already sent.")
+        messages.success(request, "Friend request already sent.")
         return redirect("friend:user_page")
     except FriendRequest.DoesNotExist:
         FriendRequest.objects.create(sender=sender, receiver=receiver)
@@ -32,7 +32,7 @@ def accept_friend_request(request, user_id):
     receiver = request.user
     sender = User.objects.get(id=user_id)
     if sender in receiver.friends.all():
-        messages.warning(request, "Already friends.")
+        messages.success(request, "Already friends.")
         return redirect("friend:user_page")
     try:
         friend_request = FriendRequest.objects.get(sender=sender, receiver=receiver)
@@ -49,7 +49,7 @@ def accept_friend_request(request, user_id):
             pass
         return redirect("friend:user_page")
     except FriendRequest.DoesNotExist:
-        messages.warning(request, "No friend request found.")
+        messages.success(request, "No friend request found.")
         return redirect("friend:user_page")
 
 

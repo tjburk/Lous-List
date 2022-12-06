@@ -82,7 +82,7 @@ def add_course_to_schedule(request, course_number):
     # Everything is good! Add course to schedule
     else:
         current_schedule.add_course(course)
-        messages.success(request, "Course added successfully.")
+        messages.warning(request, "Course added successfully.")
         return redirect(request.META.get('HTTP_REFERER'))
 
 
@@ -93,7 +93,7 @@ def delete_course_from_schedule(request, course_number):
 
     # If course is in schedule
     if current_schedule.courses.filter(course_number=course_number).exists():
-        messages.success(request, "Course successfully deleted.")
+        messages.warning(request, "Course successfully deleted.")
         current_schedule.delete_course(course)
         # Refresh current page
         return redirect(request.META.get('HTTP_REFERER'))
