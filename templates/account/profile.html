@@ -12,10 +12,10 @@
         <div class="main">
             <div class='head'>
                 <div class='buttonWrapper'>
-                    <form class='returnForm' method="GET" action={% url 'home' %}>
+                    <form class='returnForm' method="GET" onclick="history.back()">
                         {% csrf_token %}
                         <div class="returnButton">
-                            <input class='return' type="submit" value="<" align='left'>
+                            <input class='return' type="button" value="<" align='left'>
                         </div>
                     </form>
                 </div>
