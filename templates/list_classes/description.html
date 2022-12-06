@@ -22,17 +22,18 @@
         {% csrf_token %}
         <input type="button" value="Back">
     </form>
-    <p>Units: {{ course.units }}</p>
-    <p>Type: {{ course.component }}</p>
-    <p>Days: {{ course.meetings_days }}</p>
-    <p>Time: {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
+    <p><b>Units: </b>{{ course.units }}<br>
+    <b>Type: </b>{{ course.component }}<br>
+    <b>Days: </b>{{ course.meetings_days }}<br>
+    <b>Time: </b>{{ course.meetings_start_time }} - {{ course.meetings_end_time }}<br>
     {% if course.secondary_meetings_days != "-" %}
-        <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
-        <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
+        <b>Secondary Days: </b>{{ course.secondary_meetings_days }}<br>
+        <b>Secondary Time: </b>{{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
     {% endif %}
-    <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
-    <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
-    <p>Location: {{ course.meetings_facility_description }}</p>
+    <b>Instructor: </b>{{course.instructor_name}} ({{ course.instructor_email }})<br>
+    <b>Location: </b>{{ course.meetings_facility_description }}<br>
+    <b>Enrollment Availability: </b>{{ course.enrollment_total }}/{{ course.class_capacity }}<br>
+    <b>Course Number: </b>{{ course.course_number }}<br>
     {% if user.is_authenticated %}
         <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
             {% csrf_token %}
@@ -54,7 +55,8 @@
                                                         <b>Time: </b>{{ component.meetings_start_time }} - {{ component.meetings_end_time }}<br>
                                                         <b>Instructor: </b>{{component.instructor_name}} ({{ component.instructor_email }})<br>
                                                         <b>Location: </b>{{component.meetings_facility_description}}<br>
-                                                        <b>Enrollment Availability: </b>{{ component.enrollment_total }}/{{ component.class_capacity }}<br>">
+                                                        <b>Enrollment Availability: </b>{{ component.enrollment_total }}/{{ component.class_capacity }}<br>
+                                                        <b>Course Number: </b>{{ component.course_number }}">
                             {{component.meetings_days}} {{component.meetings_start_time}} - {{component.meetings_end_time}}</option>
                     {% endfor %}
                 </select>
@@ -68,6 +70,12 @@
                 }
                 update();
             </script>
+        {% if user.is_authenticated %}
+        <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
+            {% csrf_token %}
+            <input type="submit" value="Add Component to Schedule">
+        </form>
+        {% endif %}
         {% comment %}
             {% if component.secondary_meetings_days != "-" %}
                 <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
