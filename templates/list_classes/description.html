@@ -18,7 +18,7 @@
         </ul>
     {% endif %}
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
-    <form method="GET" onclick="history.back()">
+    <form method="GET" onclick="history.back()" class='class-form'>
         {% csrf_token %}
         <input type="button" value="Back">
     </form>
@@ -34,7 +34,7 @@
     <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
     <p>Location: {{ course.meetings_facility_description }}</p>
     {% if user.is_authenticated %}
-        <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %}>
+        <form method="POST" action={% url 'schedule:add_course' course_number=course.course_number %} class='class-form'>
             {% csrf_token %}
             <input type="submit" value="Add Course to Schedule">
         </form>
@@ -44,7 +44,7 @@
     {% if component_list %}
         <h3>Available Components:</h3>
         <ul style="list-style:none">
-            <form action="#">
+            <form action="#" class='class-form'>
                 <select name="languages" id="lang">
                     {% for component in component_list %}
                         <option value="select">{{component.meetings_days}} {{component.meetings_start_time}} - {{component.meetings_end_time}}</option>

@@ -18,7 +18,7 @@
     margin: 15px 0 0 0;
 }
 
-form {
+.search-bar {
     float: right;
     display: flex;
     padding: 2px;
@@ -26,6 +26,16 @@ form {
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     margin: -52px 120px 0 0
+}
+
+.class-form {
+  float: right;
+  display: flex;
+  padding: 2px;
+  border: 1px solid transparent;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  margin: -52px 120px 0 0
 }
 
 input[type="text"] {
