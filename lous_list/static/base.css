@@ -32,16 +32,15 @@ input[type="text"] {
     float: right;
     padding: 5px;
     border: none;
-    margin-top: 5px;
     margin-right: 16px;
     font-size: 17px;
   }
 
 .searchButton {
     float: right;
-    padding: 6px 10px;
-    margin-top: 5px;
-    margin-right: 16px;
+    /* padding: 6px 10px;
+    margin-right: 16px; */
+    margin: 0;
     background: #ddd;
     font-size: 17px;
     border: none;
