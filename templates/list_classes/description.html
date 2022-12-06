@@ -45,35 +45,42 @@
         <h3>Available Components:</h3>
         <ul style="list-style:none">
             <form action="#">
-                <select name="languages" id="lang">
+                <select id="select_component" onChange="update()">
                     {% for component in component_list %}
-                        <option value="select">{{component.meetings_days}} {{component.meetings_start_time}} - {{component.meetings_end_time}}</option>
+                        <option id="selected_component" value="
+                                                        <b>Units: </b>{{ component.units }}<br>
+                                                        <b>Type: </b>{{ component.component }}<br>
+                                                        <b>Days: </b>{{ component.meetings_days }}<br>
+                                                        <b>Time: </b>{{ component.meetings_start_time }} - {{ component.meetings_end_time }}<br>
+                                                        <b>Instructor: </b>{{component.instructor_name}} ({{ component.instructor_email }})<br>
+                                                        <b>Location: </b>{{component.meetings_facility_description}}<br>
+                                                        <b>Enrollment Availability: </b>{{ component.enrollment_total }}/{{ component.class_capacity }}<br>">
+                            {{component.meetings_days}} {{component.meetings_start_time}} - {{component.meetings_end_time}}</option>
                     {% endfor %}
                 </select>
-                <input type="submit" value="Submit" />
-          </form>
-        {% comment %} {% for component in component_list %}
-            <li>
-                <h2>{{ component.subject }} {{ component.catalog_number }} - {{ component.description }}</h2>
-                <p>Units: {{ component.units }}</p>
-                <p>Type: {{ component.component }}</p>
-                <p>Days: {{ component.meetings_days }}</p>
-                <p>Time: {{ component.meetings_start_time }} - {{ component.meetings_end_time }}</p>
-                {% if component.secondary_meetings_days != "-" %}
-                    <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
-                    <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
-                {% endif %}
-                <p>Instructor: {{component.instructor_name}} ({{ component.instructor_email }})</p>
-                <p>Enrollment Availability: {{ component.enrollment_total }}/{{ component.class_capacity }}</p>
-                {% if user.is_authenticated %}
-                    <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
-                        {% csrf_token %}
-                        <input type="submit" value="Add Course to Schedule">
-                    </form>
-                {% endif %}
-            </li>
-        {% endfor %} {% endcomment %}
+            </form>
+            <p id="comp_header"></p>
+            <script>
+                function update() {
+                    var select = document.getElementById('select_component');
+                    var option = select.options[select.selectedIndex];
+                    document.getElementById("comp_header").innerHTML = option.value;
+                }
+                update();
+            </script>
+        {% comment %}
+            {% if component.secondary_meetings_days != "-" %}
+                <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
+                <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
+                    {% csrf_token %}
+                    <input type="submit" value="Add Course to Schedule">
+                </form>
+            {% endif %}
         </ul>
+        {% endcomment %}
     {% else %}
         <h3>No components are available for this course.</h3>
     {% endif %}
