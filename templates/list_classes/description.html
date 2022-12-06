@@ -18,9 +18,9 @@
         </ul>
     {% endif %}
     <h1>{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</h1>
-    <form class='returnForm' method="GET" onclick="history.back()">
+    <form method="GET" onclick="history.back()">
         {% csrf_token %}
-        <input class='return' type="button" value="Back" align='left'>
+        <input type="button" value="Back">
     </form>
     <p>Units: {{ course.units }}</p>
     <p>Type: {{ course.component }}</p>
