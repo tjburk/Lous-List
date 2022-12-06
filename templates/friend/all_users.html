@@ -1,116 +1,39 @@
+{% load static %} 
 <!DOCTYPE html>
 <html lang="en">
-{% include 'lous_list/base.html' %}
-
-{% comment %} <style>
-    input[id=userNameField], select {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 1px;
-      box-sizing: border-box;
-    }
-
-    form{
-        display:block;
-    }
-
-    textarea {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    input[type=submit] {
-      width: 100%;
-      background-color: #007acc;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type=button] {
-      width: 100%;
-      background-color: #4CAF50;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    
-    input[type=submit]:hover {
-      background-color: #45a049;
-    }
-    
-    div.special {
-      border-radius: 5px;
-      background-color: #f2f2f2;
-    }
-</style> {% endcomment %}
-<head>
-    {% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Friend Page</title>
+    <head>
+      {% load static %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'accounts/profile.css' %}">
+        <title>Profile Page</title>
 </head>
-<body>
-    <h1>Friend Request Page</h1>
-    {% if user.is_authenticated %}
-    <h1>Send Friend Requests</h1>
-    <h2>Current User: {{ user.username }}</h2>
-    {% for person in users %}
-        <!-- If person is not current user -->
-        {% if person.id != user.id %}
-            <a href='{% url 'profile' user_id=person.id%}'>
-                <h4>{{ person.username }}</h4>
-            </a>
-            <!-- Already friends -->
-            {% if person.id in friends %}
-                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                    {% csrf_token %}
-                    <input type="button" value="You are Friends!">
-                </form>
-                <!-- Friend Request already sent -->
-            {% elif person in sent_users %}
-                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                    {% csrf_token %}
-                    <input type="button" value="Friend Request Sent!">
-                </form>
-            <!-- Friend Request not already sent -->
-            {% else %}
-                <form method="POST" action={%  url "friend:send_request" user_id=person.id %} >
-                    {% csrf_token %}
-                    <input type="submit" value="Send Friend Request">
-                </form>
-            {% endif %}
-            <!-- Accept button only appears if there is a request -->
-            {% if person in received_users %}
-                <form method="POST" action={% url 'friend:accept_request' user_id=person.id %}>
-                    {% csrf_token %}
-                    <input type="submit" value="Accept Friend Request">
-                </form>
-            {% endif %}
-        {% endif %}
-        <br/>
-    {% endfor %}
-    {% else %}
-        <h1>Please log in first before you view other users.</h1>
-        <form>
-            {% csrf_token %}
-            <input type="button" value="Back" onclick="history.back()">
-        </form>
-    {% endif %}
-</body>
-
+    <body>
+        <div class="main">
+            <div class='head'>
+                <div class='buttonWrapper'>
+                    <form class='returnForm' method="GET" action={% url 'home' %}>
+                        {% csrf_token %}
+                        <div class="returnButton">
+                            <input class='return' type="submit" value="<" align='left'>
+                        </div>
+                    </form>
+                </div>
+                <div class='headerWrapper'>
+                    <h1>Users Page</h1>
+                </div>
+                <div class='buttonWrapper'>
+                </div>
+            </div>
+            <div class='underline'></div>
+            <form action="#">
+            <select name="languages" id="lang">
+            {% for person in users %}
+                    <option value="select">{{person.username}}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </body>
 </html>
