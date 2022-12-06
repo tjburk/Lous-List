@@ -10,12 +10,6 @@
 </head>
     <body>
         <div class="main">
-            <form method="GET" action={% url 'home' %}>
-                {% csrf_token %}
-                <div class="returnButton">
-                    <input type="submit" value="Return Home">
-                </div>
-            </form>
             <h1>Profile Page</h1>
             <h3>User Info</h3>
             {% if user.id in current_user_friend_ids or user.id == current_user.id %}
