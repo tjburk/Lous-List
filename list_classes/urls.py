@@ -8,5 +8,4 @@ urlpatterns = [
     path('comment/', include('comment.urls')),
     path('<str:subjects_displayed>/', views.IndexView.as_view(), name="classes"),
     path('description/<int:course_number>/', views.description, name='description'),
-    #path('description/<int:course_number>/<int:component_number>/', views.description_component, name='description_component'),
 ]
