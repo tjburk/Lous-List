@@ -34,7 +34,15 @@
     {% if component_list %}
         <h3>Available Components:</h3>
         <ul style="list-style:none">
-        {% for component in component_list %}
+            <form action="#">
+                <select name="languages" id="lang">
+                    {% for component in component_list %}
+                        <option value="select">{{component.meetings_days}} {{component.meetings_start_time}} - {{component.meetings_end_time}}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Submit" />
+          </form>
+        {% comment %} {% for component in component_list %}
             <li>
                 <h2>{{ component.subject }} {{ component.catalog_number }} - {{ component.description }}</h2>
                 <p>Units: {{ component.units }}</p>
@@ -50,7 +58,7 @@
                     </form>
                 {% endif %}
             </li>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
         </ul>
     {% else %}
         <h3>No components are available for this course.</h3>
