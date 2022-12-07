@@ -17,4 +17,4 @@ def set_up_profile(request, user_id):
     return render(request, 'account/profile.html', {'current_user': current_user,
                                                     'current_user_friend_ids': current_user_friend_ids,
                                                     'user': user,
-                                                    'courses': courses})
+                                                    'courses': courses,})

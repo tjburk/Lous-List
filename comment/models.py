@@ -1,5 +1,7 @@
 from django.db import models
 from list_classes.models import Course
+from schedule.models import Schedule
+from django.contrib.auth.models import User
 from django.urls import reverse
 
 

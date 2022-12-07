@@ -14,4 +14,5 @@ class AddCommentView(CreateView):
         form.instance.course_id=self.kwargs['course_number']
         return super().form_valid(form)
 
+
     
