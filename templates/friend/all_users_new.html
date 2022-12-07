@@ -1,6 +1,6 @@
 {% extends 'lous_list/base.html' %}
 {%load static %}
-{%block content %}
+{% block content %}
 <link rel="stylesheet" href="{% static 'homes.css' %}">
 <div class="accordionF">
     <h1>Users Page</h1>
@@ -12,15 +12,17 @@
                 {% for person in users %}
                     {% if person.id in friends %}
                     <ul>
+                    <hr>
                         <li>
                             <a>{{person.username}}</a>
                             <a href='{% url 'profile' user_id=person.id%}'>
-                                <button class='profileLink'>{{person.username}} 's Profile</button>
+                                <button class='profileLink'>{{person.username}}'s Profile</button>
                             </a>
                         </li>
                     </ul>
                     {% endif %}
                 {% endfor %}
+                <hr>
             {% endif %}
         </div>
       </div>
@@ -33,6 +35,7 @@
                 {% for person in users %}
                     {% if person.id not in friends %}
                         <ul>
+                        <hr>
                             <li>
                                 <a>{{person.username}}</a>
                                     <a>
@@ -60,6 +63,7 @@
                         </ul>
                     {% endif %}
                 {% endfor %}
+                <hr>
             {% endif %}
           </div>
         </div>
