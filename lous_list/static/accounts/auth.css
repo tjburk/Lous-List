@@ -95,8 +95,6 @@ input[type='submit']:hover {
 .googleSignIn {
   height: 50px;
   width: 218px;
-  border: none;
-	border-radius: 2px;
   color: #4285f4;
 	box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.18), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   border: 1px solid #f9f9f9;
