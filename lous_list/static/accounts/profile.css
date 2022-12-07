@@ -21,7 +21,7 @@ html {
 
   input[class=accept] {
       width: 75%;
-      background-color: orange;
+      background-color: #007acc;
       color: white;
       padding: 14px 20px;
       margin: 8px 0;
