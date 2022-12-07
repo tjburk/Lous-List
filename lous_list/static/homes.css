@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   background: #bedfe8;
 }
-  
+
   /* CSS */
   .section {
     display: inline-block;
@@ -117,7 +117,7 @@ li {
       border-radius: 4px;
       cursor: pointer;
     }
-    
+
     input[type=submit]:hover {
       background-color: #45a049;
     }

@@ -66,6 +66,13 @@ input[type="text"] {
   backdrop-filter: blur(4px) saturate;
 }
 
+form {
+    float: right;
+    display: flex;
+    padding: 2px;
+    margin: -52px 120px 0 0
+}
+
 ::placeholder {
   color: #a1a1a9;
 }
@@ -98,7 +105,7 @@ input[type="text"] {
 .searchButton:hover {
   background: rgb(143, 142, 142);
 }
-  
+
   input[type="search"]::placeholder {
     color: #bbb;
   }
