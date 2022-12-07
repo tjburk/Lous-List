@@ -98,7 +98,7 @@ li {
 }
 /* FIGURE OUT WHERE PADDING TOP NEEDS TO BE CHANGED */
 
-    input[type=submit] {
+    input[class=send] {
       width: 100%;
       background-color: #007acc;
       color: white;
@@ -108,7 +108,25 @@ li {
       cursor: pointer;
     }
 
-    input[type=button] {
+    input[class=send]:hover {
+      background-color: #009aff;
+    }
+
+    input[class=accept] {
+      width: 100%;
+      background-color: darkblue;
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[class=accept]:hover {
+      background-color: #0000ff;
+    }
+
+    input[class=sent] {
       width: 100%;
       background-color: #4CAF50;
       color: white;
@@ -118,8 +136,8 @@ li {
       cursor: pointer;
     }
 
-    input[type=submit]:hover {
-      background-color: #45a049;
+    input[class=sent]:hover {
+      background-color: #63d567;
     }
 
     .profileLink {
