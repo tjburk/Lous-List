@@ -26,13 +26,22 @@
     </form>
     <p><b>Units: </b>{{ course.units }}<br>
     <b>Type: </b>{{ course.component }}<br>
-    <b>Days: </b>{{ course.meetings_days }}<br>
-    <b>Time: </b>{{ course.meetings_start_time }} - {{ course.meetings_end_time }}<br>
+    {% if course.meetings_days != "" %}
+        <b>Days: </b>{{ course.meetings_days }}<br>
+        <b>Time: </b>{{ course.meetings_start_time }} - {{ course.meetings_end_time }}<br>
+    {% else %}
+        <b>Days: </b>No dates have been assigned to this course.<br>
+        <b>Time: </b>No times have been assigned to this course.<br>
+    {% endif %}
     {% if course.secondary_meetings_days != "-" %}
         <b>Secondary Days: </b>{{ course.secondary_meetings_days }}<br>
         <b>Secondary Time: </b>{{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
     {% endif %}
-    <b>Instructor: </b>{{course.instructor_name}} ({{ course.instructor_email }})<br>
+    {% if course.instructor_email != "" %}
+        <b>Instructor: </b>{{course.instructor_name}} ({{ course.instructor_email }})<br>
+    {% else %}
+        <b>Instructor: </b>No instructor has been assigned to this course.<br>
+    {% endif %}
     <b>Location: </b>{{ course.meetings_facility_description }}<br>
     <b>Enrollment Availability: </b>{{ course.enrollment_total }}/{{ course.class_capacity }}<br>
     <b>Course Number: </b>{{ course.course_number }}<br>
@@ -53,11 +62,21 @@
                         <option id="selected_component" value="
                                                         <b>Units: </b>{{ component.units }}<br>
                                                         <b>Type: </b>{{ component.component }}<br>
-                                                        <b>Days: </b>{{ component.meetings_days }}<br>
-                                                        <b>Time: </b>{{ component.meetings_start_time }} - {{ component.meetings_end_time }}<br>
+                                                        {% if component.meetings_days != "" %}
+                                                            <b>Days: </b>{{ component.meetings_days }}<br>
+                                                            <b>Time: </b>{{ component.meetings_start_time }} - {{ component.meetings_end_time }}<br>
+                                                        {% else %}
+                                                            <b>Days: </b>No dates have been assigned to this course.<br>
+                                                            <b>Time: </b>No times have been assigned to this course.<br>
+                                                        {% endif %}
                                                         {% if component.secondary_meetings_days != "-" %}
-                                                            Secondary Days: {{ course.secondary_meetings_days }}<br>
-                                                            Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
+                                                            Secondary Days: {{ component.secondary_meetings_days }}<br>
+                                                            Secondary Time: {{ component.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
+                                                        {% endif %}
+                                                        {% if course.instructor_email != "" %}
+                                                            <b>Instructor: </b>{{component.instructor_name}} ({{ component.instructor_email }})<br>
+                                                        {% else %}
+                                                            <b>Instructor: </b>No instructor has been assigned to this course.<br>
                                                         {% endif %}
                                                         <b>Instructor: </b>{{component.instructor_name}} ({{ component.instructor_email }})<br>
                                                         <b>Location: </b>{{component.meetings_facility_description}}<br>

@@ -18,16 +18,25 @@
         {% for course in course_list %}
             <li style="background-color: #eeeeee">
                 <div class="header"><a href="{% url 'list_classes:description' course_number=course.course_number %}">{{ course.subject }} {{ course.catalog_number }} - {{ course.description }}</a></div>
-                <p>Units: {{ course.units }}</p>
-                <p>Type: {{ course.component }}</p>
-                <p>Days: {{ course.meetings_days }}</p>
-                <p>Time: {{ course.meetings_start_time }} - {{ course.meetings_end_time }}</p>
-                {% if course.secondary_meetings_days != "-" %}
-                    <p>Secondary Days: {{ course.secondary_meetings_days }}</p>
-                    <p>Secondary Time: {{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}</p>
+                <p><b>Units: </b>{{ course.units }}<br>
+                <b>Type: </b>{{ course.component }}<br>
+                {% if course.meetings_days != "" %}
+                    <b>Days: </b>{{ course.meetings_days }}<br>
+                    <b>Time: </b>{{ course.meetings_start_time }} - {{ course.meetings_end_time }}<br>
+                {% else %}
+                    <b>Days: </b>No dates have been assigned to this course.<br>
+                    <b>Time: </b>No times have been assigned to this course.<br>
                 {% endif %}
-                <p>Instructor: {{course.instructor_name}} ({{ course.instructor_email }})</p>
-                <p>Enrollment Availability: {{ course.enrollment_total }}/{{ course.class_capacity }}</p>
+                {% if course.secondary_meetings_days != "-" %}
+                    <b>Secondary Days: </b>{{ course.secondary_meetings_days }}<br>
+                    <b>Secondary Time: </b>{{ course.secondary_meetings_start_time }} - {{ course.secondary_meetings_end_time }}<br>
+                {% endif %}
+                {% if course.instructor_email != "" %}
+                    <b>Instructor: </b>{{course.instructor_name}} ({{ course.instructor_email }})<br>
+                {% else %}
+                    <b>Instructor: </b>No instructor has been assigned to this course.<br>
+                {% endif %}
+                    <b>Enrollment Availability: </b>{{ course.enrollment_total }}/{{ course.class_capacity }}</p>
             </li>
         {% endfor %}
         </ul>
