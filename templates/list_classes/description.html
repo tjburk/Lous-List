@@ -46,7 +46,7 @@
     <hr>
     {% if component_list %}
         <h3>Available Components:</h3>
-        <ul style="list-style:none">
+        <ul>
             <form method="get" action="#">
                 <select id="select_component" onchange="update()">
                     {% for component in component_list %}
@@ -79,16 +79,20 @@
         </ul>
         <hr>
         <h3>Enroll in Component:</h3>
-        <ul style="list-style:none">
-        {% if user.is_authenticated %}
-            {% for component in component_list %}
-                <p>{{ component.meetings_days }} {{ component.meetings_start_time }} - {{ component.meetings_end_time }}, {{ component.meetings_facility_description }}</p>
-                <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
-                    {% csrf_token %}
-                    <input type="submit" value="Add Component to Schedule">
-                </form>
-            {% endfor %}
-        {% endif %}
+        <ul>
+            <li>
+                {% if user.is_authenticated %}
+                    {% for component in component_list %}
+                        <p>{{ component.meetings_days }} {{ component.meetings_start_time }} - {{ component.meetings_end_time }}, {{ component.meetings_facility_description }}</p>
+                        <a>
+                            <form method="POST" action={% url 'schedule:add_course' course_number=component.course_number %}>
+                                {% csrf_token %}
+                                <input type="submit" value="Add Component to Schedule">
+                            </form>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </li>
         </ul>
     {% else %}
         <h3>No components are available for this course.</h3>
